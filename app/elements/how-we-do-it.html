@@ -1,0 +1,269 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<link rel="import" href="/bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="/bower_components/neon-animation/neon-shared-element-animatable-behavior.html">
+<link rel="import" href="/bower_components/neon-animation/animations/hero-animation.html">
+<link rel="import" href="/bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="/bower_components/neon-animation/animations/fade-in-animation.html">
+
+<link rel="import" href="/elements/elements.html">
+<link rel="import" href="/elements/see-portfolio.html">
+
+<dom-module id="how-we-do-it">
+    <style>
+       html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: white;
+        }
+        paper-scroll-header-panel {
+          height: 100%;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: white;
+
+          /* background for toolbar when it is at its full size */
+          --paper-scroll-header-panel-full-header: {
+            background-image: url(/images/procreative-desk.jpg);
+          };
+
+          /* background for toolbar when it is condensed */
+          --paper-scroll-header-panel-condensed-header: {
+            background-color: var(--default-primary-color);
+          };
+            
+          --paper-scroll-header-header: {
+            pointer-events: none;
+          }
+        }
+
+        paper-toolbar.tall {
+            background-color: transparent;
+            height: 20vh;
+        }
+
+        paper-toolbar.tall .title {
+            font-size: 2em; /* previously in px, 32 */
+            margin: 0;
+
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+        }
+        
+        paper-toolbar h1 {
+            font-size: 1.6em;
+        }
+        
+        @media screen and (max-width: 414px) {
+            paper-toolbar h1 {
+                font-size: 1.2em;
+            }
+        }
+        
+        /*content styling*/
+        h2, h3 {
+            font-family: 'Roboto Slab';
+        }
+        .parent {
+            display: table;
+            width: 100%;
+        }
+        paper-card {
+            display: table-cell;
+            vertical-align: middle;
+            box-sizing: border-box;
+            height: 100vh;
+            padding-left: 20%;
+            padding-right: 20%;
+        }
+        .first-screen paper-card {
+            height: 80vh;
+        }
+        @media screen and (max-width: 768px){
+            paper-card {
+                padding: 5%;
+            }
+        }
+        @media screen and (min-width:769px) and (max-width: 1280px) {
+             paper-card {
+                padding: 10%;
+            }
+        }
+        paper-card h2 {
+            font-size: 2em;
+            font-weight: 900;
+        }
+        paper-card p {
+            font-size: 1.6em;
+            font-weight: 400;
+        }
+        @media screen and (max-width: 767px){
+            paper-card h2 {
+                font-size: 1.6em; 
+            }
+            paper-card p {
+                font-size: 1.2em;
+            }
+        }
+        .content {
+            width: 100%;
+        }
+        #experience {
+            background: var(--text-primary-color);
+            color: var(--primary-text-color);
+        }
+        #business {
+            background: white;
+            color: var(--primary-text-color);
+        }
+        .blend {
+            background: rgba(255,255,255,0.7);
+            padding: 5%;
+            border-radius: 16px;
+        }
+        #partnership {
+            background: url(/images/experience.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        @media screen and (max-width:1024px){
+            #partnership {
+                background: url(/images/experience_small.jpg) no-repeat center center;
+                background-size: cover;
+            }
+        }
+        #creativity {
+            background: url(/images/stay-hungry-stay-foolish.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        #balance {
+            background: white;
+            background-size: cover;
+            color: var(--primary-text-color);
+        }
+        @media screen and (min-width:768px) {
+            paper-card h2 {
+                font-size: 4em;
+                font-weight: 400;
+            }
+        }
+        /* duplicated from app-theme.html */
+        @media screen and (max-width: 767px) and (orientation: landscape) {
+            paper-toolbar .title {
+                font-size: 1.5em !important;
+            }
+            paper-toolbar {
+                background: var(--default-primary-color) !important;
+            }
+        }
+    </style>
+
+    <template>
+        
+        <paper-scroll-header-panel class="flex" condenses header-height="20vh" condensed-header-height="64" id="header">
+            
+            <paper-toolbar class="tall">
+                <a href="/" class="site-logo" title="ProCreative Home"><iron-icon src="/images/logo-white.png"></iron-icon></a>
+                <div class="flex"></div>
+                <menu-button class="top-menu"></menu-button>
+                <div class="bottom title"><h1>How We Work</h1></div>  
+            </paper-toolbar>
+            
+            <div class="content">
+                <div class="parent first-screen">
+                    <paper-card id="experience">
+                        <h2>Life is all about Experience</h2>
+                        <p> 
+                            What matters most for the success is the end <strong>user</strong>. For us it's you and your product's audience. We start each project from analysis and <strong>strategy</strong>, so firstly we listen, ask, research. Later we advise and suggest. Smart solution always <strong>saves the money</strong>. Great product motivates people to share the news with their friends and use it often.
+                        </p>
+                    </paper-card>
+                </div>
+                
+                <div class="parent">
+                    <paper-card id="partnership">
+                        <div class="blend">
+                            <h2>Good product is never done</h2>
+                            <p>Successful ideas have their continuation. You don't write a software once and forever. We play in <strong>your team</strong>. We are whenever you need us to celebrate the next million of users, advise which tool to use, balance business with design and technical ideas, or to create awesome new features your current users anticipate.</p>
+                        </div>
+                    </paper-card>
+                </div>
+                
+                <div class="parent">
+                    <paper-card id="business">
+                        <h2>Being on the same page is powerful </h2>
+                        <p>
+                            You've just found the programming team with <strong>business in their blood</strong>. Dedication, smooth communication, transparency, strategic approach, timezone benefits, keeping secret, on time shipment, big picture thinking - does it ring a bell?
+                        </p>
+                    </paper-card>
+                </div>
+            
+                <div class="parent">
+                    <paper-card id="creativity">  
+                        <div class="blend">
+                            <h2>Curiosity empowers creativity</h2>
+                            <p>
+                        Isn't it awesome to stay a kid, be always curious and learning? Getting feedback builds your experience. You grow when you <strong>stay hungry</strong>. Food for thoughts triggers innovation and we are really the foodies.
+                            </p>
+                        </div> 
+                    </paper-card>
+                </div>
+                
+                <div class="parent">
+                    <paper-card id="balance">
+                        <h2>Lack of balance kills</h2>
+                        <p>
+                            Passion makes a man and business is human. We keep an eye not to overload, we seek smart challenges. Variety is the driving force. <strong>Out of the box</strong> thinking needs some free space and inspiration.
+                        </p>
+                    </paper-card>
+                </div>
+        
+            </div>
+            
+            <see-portfolio></see-portfolio>
+            <procreative-footer></procreative-footer>
+            
+            
+                </paper-scroll-header-panel>
+        
+    </template>
+    
+    <script>
+        Polymer({
+            is: 'how-we-do-it',
+
+            behaviors: [Polymer.NeonSharedElementAnimatableBehavior],
+
+            properties: {
+                animationConfig: {
+                    value: function(){
+                        return {
+                            'entry': [{
+                                name: 'hero-animation',
+                                id: 'hero',
+                                toPage: this
+                            }, {
+                                name: 'fade-in-animation',
+                                node: this
+                            }],
+                            'exit': {
+                                name: 'fade-out-animation',
+                                node: this
+                            }
+                        };
+                    }
+                },
+
+                sharedElements: {
+                    value: function() {
+                        return {
+                            'hero': this.$.header
+                        };
+                    }
+                }
+            }
+        });
+    </script>
+</dom-module>

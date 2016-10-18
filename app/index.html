@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Looking for web developers? ProCreative is a Web Applications Development Company Designing and Implementing Custom-Built Software Solutions.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web Applications Development Company Providing Custom-Built Software</title>
+
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#2E3AA1">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Tile color for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Web Applications Development Company Providing Custom-Built Software">
+    
+    <!-- icons -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="apple-touch-icon.png">
+    <link rel="icon" sizes="144x144" href="ms-touch-icon-144x144-precomposed.png">
+    <link rel="icon" sizes="192x192" href="chrome-touch-icon-192x192.png">
+    <meta name="msapplication-TileImage" content="ms-touch-icon-144x144-precomposed.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Applications Development Company Providing Custom-Built Software">
+
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- endbuild-->
+
+    <link rel="import" href="/bower_components/neon-animation/neon-animated-pages.html">
+    <link rel="import" href="/bower_components/iron-flex-layout/classes/iron-flex-layout.html">
+    <!-- endbuild -->
+
+    <!-- will be replaced with elements/elements.vulcanized.html -->
+    <link rel="import" href="/elements/see-how-we-do-it.html">
+    <link rel="import" href="/elements/in-a-nutshell.html">
+    
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+    
+    <!-- For shared styles, shared-styles.html import in elements.html -->
+    <style is="custom-style">
+        html, body {
+            background-color: white;
+            text-align: center;
+            height: 100%;
+        }
+    </style>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-4898616-14', 'auto');
+      ga('send', 'pageview');
+    </script>
+</head>
+
+<body unresolved class="fullbleed layout vertical">
+    <template is="dom-bind" id="app">
+        <neon-animated-pages class="flex" selected="[[selected]]">
+            <see-how-we-do-it></see-how-we-do-it>
+            <in-a-nutshell></in-a-nutshell>
+        </neon-animated-pages>
+        <menu-content></menu-content>
+    </template>
+    
+    <script>
+        var app = document.querySelector('#app');
+        app.selected = 0;
+        
+        document.addEventListener('ctaClicked', function() {
+            app.selected = 1;
+            // fix for this bug: https://github.com/PolymerElements/paper-scroll-header-panel/issues/33
+            document.querySelector('#header').measureHeaderHeight();
+        
+            // custom transformation: scale header's title
+            var title = document.querySelector('.title');
+            addEventListener('paper-header-transform', function(e) {
+              var d = e.detail;
+              var m = d.height - d.condensedHeight;
+              var scale = Math.max(0.75, (m - d.y) / (m / 0.25)  + 0.75);
+
+              if (d.height - d.y > d.condensedHeight) {
+                  Polymer.Base.transform('scale(' + scale + ') translateZ(0)', title);
+              }
+                
+              document.querySelector('#header').measureHeaderHeight();
+            });
+        });
+    </script>
+    <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+</body>
+</html>

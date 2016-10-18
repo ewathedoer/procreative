@@ -1,0 +1,311 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<link rel="import" href="/bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="/bower_components/neon-animation/neon-shared-element-animatable-behavior.html">
+<link rel="import" href="/bower_components/neon-animation/animations/hero-animation.html">
+<link rel="import" href="/bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="/bower_components/neon-animation/animations/fade-in-animation.html">
+
+<link rel="import" href="/elements/elements.html">
+<link rel="import" href="/elements/see-portfolio.html">
+
+<dom-module id="in-a-nutshell">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: white;
+        }
+        paper-scroll-header-panel {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+
+            /* background for toolbar when it is at its full size */
+            --paper-scroll-header-panel-full-header: {
+              background-image: url(/images/procreative-desk.jpg);
+            };
+
+            /* background for toolbar when it is condensed */
+            --paper-scroll-header-panel-condensed-header: {
+              background-color: var(--default-primary-color);
+            };
+            
+            --paper-scroll-header-header: {
+              pointer-events: none;
+            }
+        }
+
+        paper-toolbar.tall {
+            background-color: transparent;
+            height: 20vh;
+        }
+
+        paper-toolbar.tall .title {
+            font-size: 2em; /* previously in px, 32 */
+            margin: 0;
+
+            -webkit-transform-origin: center center;
+            transform-origin: center center;
+        }
+        
+        paper-toolbar h1 {
+            font-size: 1.6em;
+        }
+        
+        @media screen and (max-width: 414px) {
+            paper-toolbar h1 {
+                font-size: 1.2em;
+            }
+        }
+        
+        /*content styling*/
+        .parent {
+            display: table;
+            width: 100%;
+        }
+        paper-card {
+            display: table-cell;
+            vertical-align: middle;
+            box-sizing: border-box;
+            height: 100vh;
+            padding-left: 20%;
+            padding-right: 20%;
+            background: #fff;
+        }
+        .first-screen paper-card {
+            height: 80vh;
+            text-align: left;
+        }
+        @media screen and (max-width: 768px){
+            paper-card {
+                padding: 5%;
+            }
+        }
+        @media screen and (min-width:769px) and (max-width: 1280px) {
+             paper-card {
+                padding: 2% 10%;
+            }
+        }
+        paper-card h2 {
+            font-size: 2em;
+            font-weight: 900;
+            text-align: center;
+        }
+        paper-card p {
+            font-size: 1.6em;
+            font-weight: 400;
+        }
+        @media screen and (max-width: 767px){
+            paper-card h2 {
+                font-size: 1.6em; 
+            }
+            paper-card p, li {
+                font-size: 1.2em;
+            }
+        }
+        .content {
+            width: 100%;
+        }
+        @media screen and (min-width:768px) {
+            paper-card h2 {
+                font-size: 4em;
+                font-weight: 400;
+            }
+            li {
+                list-style-type: none;
+                line-height: 1.5;
+                font-size: 1.2em;
+            }
+            .key-fact-category, .key-fact {
+                display: inline-block;
+                width: 49%;
+                vertical-align: top;
+            }
+        }
+        /* duplicated from app-theme.html */
+        @media screen and (max-width: 767px) and (orientation: landscape) {
+            paper-toolbar .title {
+                font-size: 1.5em !important;
+            }
+            paper-toolbar {
+                background: var(--default-primary-color) !important;
+            }
+        }
+        li {
+            padding-bottom: 1.5em;
+        }
+        a.link, a.link:visited {
+            text-decoration: none;
+            color: #03A9F4;
+            transition: all 0.5s;
+        }
+        a.link:hover, a.link:focus, a.link:active {
+            color: #0288D1;
+            transition: all 0.2s;
+        }
+        
+        .subpage-intro {
+            padding: 5%;
+            text-align: center;
+            color: #212121;
+            font-size: 1em;
+            font-weight: 400;
+            clear: both;
+        }
+        @media screen and (min-width: 1026px) {
+            .subpage-intro {
+                font-size: 1.2em;
+                padding: 1%;
+                color: #727272;
+            }
+        }
+        .subpage-intro {
+            margin: 0;
+        }
+        
+        @media screen and (max-width:667px){
+            .subpage-intro h2 {
+                font-weight: 500;
+                font-size: 1.2em;
+            }
+        }
+        @media screen and (min-width: 668px){
+            .subpage-intro h2 {
+                font-weight: 500;
+                font-size: 2em;
+            }
+        }
+        @media screen and (min-width:1025px) {
+            .subpage-intro h2 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+    
+    <template>
+        <paper-scroll-header-panel class="flex" condenses header-height="20vh" condensed-header-height="64" id="header">
+            
+            <paper-toolbar class="tall">
+                <a href="/" class="site-logo" title="ProCreative in-a-nutshell">
+                    <iron-icon src="/images/logo-white.png"></iron-icon>
+                </a>
+                <div class="flex"></div>
+                <menu-button class="top-menu"></menu-button>
+                <div class="bottom title"><h1>Key Facts</h1></div>  
+            </paper-toolbar>
+            
+            <div class="content">
+                <div class="parent first-screen">
+                    <paper-card>
+<!--
+                        <section class="subpage-intro">
+                            <h2>ProCreative <span class="new-row">in a nutshell</span></h2>
+                        </section>
+-->
+                        <p>
+                            <ul>
+                                <li>
+                                    <span class="key-fact-category">Creating software in:</span> 
+                                    <span class="key-fact"><strong>Ruby, PHP, Java, C#, JavaScript, HTML, CSS</strong></span>
+                                </li>
+                                <li>
+                                    <span class="key-fact-category">Team size:</span>
+                                    <span class="key-fact"> 2 (<a href="/team" class="link">see the team</a>)</span>
+                                </li>
+                                <li>
+                                    <span class="key-fact-category">Years of commercial experience:</span>
+                                    <span class="key-fact" id="years-of-experience"></span>
+                                </li>
+                                <li>
+                                    <span class="key-fact-category">Main areas of experience:</span>
+                                    <span class="key-fact"><strong>backend, frontend, UX design</strong>, software architecture, server configuration and maintenance, MVP development, prototyping, project management, unit and functional testing</span>
+                                </li>
+                                <li>
+                                    <span class="key-fact-category">Timezone:</span>
+                                    <span class="key-fact"><strong>CET</strong>, Málaga (<a href="http://www.timeanddate.com/worldclock/converter.html?p1=141" class="link" target="_blank">calculate time difference</a>)</span>
+                                </li>
+                                <li>
+                                    <span class="key-fact-category">Country of origin:</span>
+                                    <span class="key-fact"><strong>Poland</strong></span>
+                                </li>
+                                <li>
+                                    <span class="key-fact-category">Currently working from:</span>
+                                    <span class="key-fact"><strong>Málaga, Spain</strong></span>
+                                </li>
+                                <li>
+                                    <span class="key-fact-category">Languages spoken:</span>
+                                    <span class="key-fact">English, Polish, Spanish (<a href="/contact" class="link">contact ProCreative</a>)</span>
+                                </li>
+                                <li>
+                                    <span class="key-fact-category">The clients so far came from:</span>
+                                    <span class="key-fact">Australia, the USA, the UK, Canada, Germany, the Netherlands, Romania, Poland (<a href="/portfolio" class="link">see some of the projects</a>)</span>
+                                </li>
+                                <li>
+                                    <span class="key-fact-category">Systems we work and test on:</span>
+                                    <span class="key-fact">OS X, Windows, Linux, Android, iOS</span>
+                                </li>
+                            </ul>
+                        </p>
+                    </paper-card>
+                </div>
+            </div>
+            
+            <see-portfolio></see-portfolio>
+            <procreative-footer></procreative-footer>
+            
+            
+        </paper-scroll-header-panel>
+    </template>
+    
+    <script>
+        Polymer({
+            is: 'in-a-nutshell',
+
+            behaviors: [Polymer.NeonSharedElementAnimatableBehavior],
+
+            properties: {
+                animationConfig: {
+                    value: function(){
+                        return {
+                            'entry': [{
+                                name: 'hero-animation',
+                                id: 'hero',
+                                toPage: this
+                            }, {
+                                name: 'fade-in-animation',
+                                node: this
+                            }],
+                            'exit': {
+                                name: 'fade-out-animation',
+                                node: this
+                            }
+                        };
+                    }
+                },
+
+                sharedElements: {
+                    value: function() {
+                        return {
+                            'hero': this.$.header
+                        };
+                    }
+                }
+            },
+            
+            attached: function() {
+                var years = document.getElementById('years-of-experience');
+                if (years !== null) {
+                    var d = new Date();
+                    years.innerHTML = d.getFullYear() - 2007;
+                }
+            }
+            
+        });
+    </script>
+</dom-module>

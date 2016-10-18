@@ -1,0 +1,51 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+
+
+
+
+<dom-module id="see-team">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+                display: block;
+                background-color: var(--secondary-text-color);
+                text-align: center;
+            }
+            paper-card {
+                background-color: transparent;
+                width:100%;
+                display: inline-block;
+                padding: 20px 0;
+            }
+            a {
+                font-size: 1.4em;
+                color: rgba(255,255,255,0.9);
+                transition: all 0.5s;
+            }
+            iron-icon {
+                margin-right: 20px;
+            }    
+            a:hover, a:focus, a:active {
+                color: var(--default-primary-color);
+                transition: all 0.2s;
+            }
+        </style>
+        <section class="next">
+            <a href="/team">
+                <paper-card elevation="2">
+                    <iron-icon icon="arrow-forward"></iron-icon><span>see the team</span>
+                </paper-card>
+            </a>
+        </section>
+    </template>
+    <script>
+
+        Polymer({
+            is: 'see-team',
+        });
+       
+    </script>
+</dom-module>

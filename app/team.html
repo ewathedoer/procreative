@@ -1,0 +1,826 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Great software and development experience. Reliable web application development team.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Polymer Starter Kit"/>
+    <title>Web Developer and UX Designer Team for Web Application Development</title>
+    
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#2E3AA1">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Tile color for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Web Developer and UX Designer Team for Web Application Development">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Developer and UX Designer Team for Web Application Development">
+
+    <!-- icons -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+    <link rel="icon" sizes="144x144" href="/ms-touch-icon-144x144-precomposed.png">
+    <link rel="icon" sizes="192x192" href="/chrome-touch-icon-192x192.png">
+    <meta name="msapplication-TileImage" content="/ms-touch-icon-144x144-precomposed.png">
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="/styles/main.css">
+    <!-- endbuild-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+    <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <!-- imports from polymer elements -->    
+    <link rel="import" href="/bower_components/polymer/polymer.html">
+    <link rel="import" href="/elements/elements.html">
+    
+    <!--import of elements used on this subpage -->
+    <link rel="import" href="/bower_components/iron-collapse/iron-collapse.html">
+    <link rel="import" href="/bower_components/paper-card/paper-card.html">
+    <link rel="import" href="/bower_components/paper-button/paper-button.html">
+    <link rel="import" href="/elements/references-procreative.html">
+    <link rel="import" href="/styles/app-theme.html">
+    <link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+    
+    <style is="custom-style">
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        paper-scroll-header-panel {
+          height: 100%;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: white;
+
+          /* background for toolbar when it is at its full size */
+          --paper-scroll-header-panel-full-header: {
+            background-image: url(/images/team-procreative.jpg);
+          };
+
+          /* background for toolbar when it is condensed */
+          --paper-scroll-header-panel-condensed-header: {
+            background-color: var(--default-primary-color);
+          };
+            
+          --paper-scroll-header-header: {
+            pointer-events: none;
+          }
+        }
+        
+        paper-toolbar h1 {
+            font-size: 1.6em;
+        }
+        
+        @media screen and (max-width: 414px) {
+            paper-toolbar h1 {
+                font-size: 1.2em;
+            }
+        }
+        
+        /*styling content of the toolbar */
+        paper-card {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background: #fff;
+        }
+        
+        /*collapse*/
+        .heading {
+            margin-top: 20px;
+            background-color: var(--text-primary-color);
+            border: 0 none;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+            width: 100%;
+            height: 70%;
+            text-align: left;
+          }
+        button.heading {
+            outline: none;
+        }
+        .collapse-content {
+            padding: 15px;
+            border: 1px solid #dedede;
+            border-top: none;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            background: var(--text-primary-color);
+        }
+        .collapse-content p {
+            font-size: 1.2em;
+        }
+        #Ewa {
+            margin-bottom: 20px;
+        }
+        .photo {
+            height: 60%;
+            width: 60%;
+            text-align: center;
+            margin: 0 auto;
+            border-radius: 50%;
+            border: solid 3px var(--default-primary-color);
+            margin-top: 0.5em;
+        }
+        .caption {
+            height: 30%;
+            padding: 0 0.3em;
+        }
+        .caption p {
+            margin: 0;
+        }
+        .caption h2 {
+            margin: 0 0 0.3em;
+        }
+        #Bartek .photo {
+            background: url(/images/procreative.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        #Ewa .photo {
+            background: url(/images/the-doer.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        .click-me {
+            color: var(--default-primary-color);
+            font-weight: 600;
+        }
+        .contact-card {
+            border-top: 1px solid;
+        }
+        .contact-card a {
+            display: block;
+            margin: 0 0.5em 1em;
+            text-decoration: none;
+            background: var(--default-primary-color);
+            color: var(--text-primary-color);
+            font-size: 1.2em;
+            font-weight: 400;
+        }
+        .contact-card paper-card {
+            height: auto;
+            margin: 0 auto;
+        }
+        .contact-card i {
+            margin-right: 1em;
+        } 
+        .button-block {
+            display: block;
+            text-align: left;
+            text-transform: none;
+            font-weight: 400;
+        }
+        .contact-card h3 {
+            margin: 1em 0;
+            font-size: 2em;
+            font-weight: 300;
+            font-stretch: extra-expanded;
+            text-align: left;
+        }
+        .skills-grid paper-card {
+            width: auto;
+            margin-top: 2%;  
+            height: auto;
+            padding: 0.5em;
+        }
+        .skills-grid paper-card h4 {
+            margin: 0;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: var(--text-primary-color);
+        }
+        .skills-grid {
+            padding: 1em;
+            text-align: center;
+            width: 100%;
+        }
+        .languages {
+            background: #D1C4E9;
+        }
+        .tools {
+            background: #FF8A80;
+        }
+        .life-skills {
+            background: #78909C;
+        }
+        .skills-grid h3 {
+            margin: 3em 0 0.3em;
+            font-size: 1.6em;
+            font-weight: 400;
+            font-stretch: extra-expanded;
+        }
+        .contact-card .wide-team h2 {
+            font-size: 1.6em;
+        }
+        
+        .wide-team p {
+            font-size: 1.2em;
+        }
+        .wide-team a {
+            display: inline;
+            background: none;
+            color: var(--primary-text-color);
+            width: auto;
+            margin: 0;
+            padding: 16px;
+            font-size: 1.5em;
+            font-weight: 400;
+            padding: 5px;
+            border-radius: 16px;
+            text-decoration: none;
+        }
+        .wide-team i {
+            margin-right: 0.2em;
+        }
+        
+        @media screen and (max-width:1024px){
+            .skills-grid {
+                padding: 0;
+                margin-bottom: 2em;
+            }
+            paper-card h4 {
+                font-size: 1.1em;
+                font-weight: 400;
+            }
+        }
+        /*starting from phones vertically*/
+        @media screen and (min-width: 479px) and (max-width: 767px) and (orientation: landscape) {
+            .photo {
+                display: none;
+            }
+            .heading {
+                height: 50%;
+            }
+            .heading h2 {
+                text-align: left;
+                padding-top: 0.2em;
+            }
+            .heading p {
+                text-align: left;
+            }
+            .click-me {
+                display: block;
+                float: right;
+            }
+        }
+        /*starting with e.g. Nexus 5*/
+        @media screen and (min-height: 567px) {
+            .heading h2 {
+                margin: 0.3em 0;
+            }
+        }
+        @media screen and (min-height: 768px) and (orientation: landscape) {
+           .photo {
+               display: block;
+            }
+        }
+        @media screen and (min-width: 768px) {
+            paper-scroll-header-panel {
+                background: #fff;
+            }
+            button.heading {
+                width: 30%;
+                height: 100%;
+                display: inline-block;
+                margin-top: 0;
+                vertical-align: top;
+                cursor: default;
+            }
+            button.heading .photo {
+                height: 45%;
+            }
+            button.heading .wide-team {
+                height: 100%;
+            }
+            .caption h2, .caption p {
+                text-align: center;
+            }
+            iron-collapse#collapse1,
+            iron-collapse#collapse2 {
+                width: 69%;
+                height: auto !important;
+                display: inline-block;
+            }
+            section#Ewa, references-procreative {
+                clear: both;
+            }
+            iron-collapse .collapse-content {
+                border: 0 none;
+                padding: 30px 60px;
+            }
+            .collapse-content p {
+                line-height: 1.5;
+                text-align: center;
+            }
+            button.heading:focus {
+                outline: none;
+            }
+            .click-me {
+                display: none;
+            }
+            .narrow-team {
+                display: none;
+            }
+            section {
+                padding-top: 3em;
+            }
+            .collapse-content p {
+                font-size: 1.6em;
+                margin: 0;
+            }
+            .contact-card {
+                margin: 4em 0;
+            }
+            .contact-card a {
+                width: 60%;
+                padding: 16px;
+                border-radius: 16px;
+                margin: 0 1em 1em;
+                font-size: 1.2em;
+                color: var(--default-primary-color);
+                transition: all 0.5s;
+            }
+            .contact-card h3 {
+                text-align: center;
+            }
+            .contact-card paper-button {
+                text-align: center;
+            }
+            .contact-card {
+                border-top:0;
+            }
+            .languages, .tools, .life-skills {
+                background: #EEEEEE;
+            }
+            .skills-grid paper-card h4 {
+                color: black;
+            }
+            .skills-grid h3 {
+                font-size: 2em;
+                font-weight: 300;
+                color: var(--primary-text-color);
+                line-height: 1.5;
+            }
+            .wide-team .contact-card {
+                padding: 0 16px;
+            }
+            .wide-team a {
+                border: solid 1px var(--secondary-text-color);
+            }
+            .photo {
+                width: 100%;
+                height: auto;
+                border-radius: 0;
+                text-align: center;
+                margin: 0 auto;
+                border: none;
+                margin-top: 0;
+            }
+            .heading {
+                border: 0 none;
+            }
+            .heading h2 {
+                margin: 1.5em 0 1em;
+            }
+        }
+        @media screen and (min-width: 1023px) {
+            .wide-team a {
+                font-size: 1.5em;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .wide-team {
+                display: none;
+            }
+            #Ewa {
+                margin-top: 2em;
+            }
+        }
+        @media screen and (min-width: 1025px) {
+            .contact-card a:hover, .contact-card a:focus, .contact-card a:active {
+                color: var(--text-primary-color);
+                background: var(--default-primary-color);
+                transition: all 0.2s;
+            }
+            .languages, .tools, .life-skills {
+                margin: 0 0.5em 0.5em 0;
+            }
+            .intro {
+                line-height: 1.5;
+                padding: 0 10%;
+            }
+        }
+        @media screen and (min-width: 1200px) {
+            .wide-team a {
+                font-size: 2em;
+            }
+        }
+        @media screen and (min-width: 1280px){
+            button.heading .photo {
+                height: 60%;
+            }
+            .contact-card h3 {
+                margin-bottom: 1.5em;
+            }
+        }
+        @media screen and (min-width: 1440px) {
+            iron-collapse .collapse-content {
+                padding: 60px 150px;
+            }
+        }
+        .contact-card .wide-team {
+            text-align: center;
+        }
+    </style>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-4898616-14', 'auto');
+      ga('send', 'pageview');
+    </script>
+</head>
+<body unresolved class="fullbleed layout vertical">
+    
+    
+    <paper-scroll-header-panel class="flex" condenses header-height="20vh" condensed-header-height="64">
+        <paper-toolbar class="tall">
+            <a href="/" class="site-logo" title="ProCreative Home"><iron-icon src="/images/logo-white.png"></iron-icon></a>
+            <div class="flex"></div>
+            <menu-button></menu-button>
+            <div class="bottom title"><h1>Team</h1></div>
+        </paper-toolbar>
+
+        <div class="content"> <!-- here starts content of panel-scroll-header -->
+            
+            <template is="dom-bind">
+                <section class="subpage-intro">
+                    <div>
+                        <p class="intro">
+                            Our <strong>mission</strong> is to collaborate on challenging projects with awesome people because it gives us satisfaction of the time well spent. We want to co-create products where users are put first because this makes a project successful, the companies develop and the team feel their work makes a real positive impact on this planet. Our goal is to be always ourselves, we strongly believe that life is too short to waste it on weird, artificial business behaviors. 
+                        </p>
+                    </div>
+                </section>
+                
+                <section id="Bartek" class="team-card">
+                    <button class="heading" tabindex="-1" aria-expanded$="[[isExpanded(opened1)]]" aria-controls="collapse1" onclick="toggle('#collapse1', '.click1')">
+                        <paper-card class="narrow-team">
+                            <div class="photo"></div>
+                            <div class="caption">
+                                <div>
+                                    <h2>Bartek</h2>
+                                    <p>software architect &amp; developer </br> 
+                                    <span class="click-me click1">discover more</span></p>
+                                </div>
+                            </div>
+                        </paper-card>
+                        
+                        <div class="wide-team">
+                            <div class="photo"></div>
+                            <div class="caption">
+                                <div>
+                                    <h2>Bartek</h2>
+                                    <p>software architect &amp; developer <span class="click-me click1">discover more</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                    <iron-collapse id="collapse1" opened="{{opened1}}">
+                      <div class="collapse-content">
+                        <p>
+                           Full-stack software engineer, in IT since 2000. Capable of explaining tech issues in human language. Graduated from Silesian University of Technology in Poland. Zend Certified Engineer. Programing because of passion for business problem solving.
+                        </p>
+                        <div class="skills-grid">
+                            <h3>Languages</h3>
+                                <paper-card class="languages">
+                                    <h4>Ruby</h4>
+                                </paper-card>
+                                <paper-card class="languages">
+                                    <h4>PHP</h4>
+                                </paper-card>
+                                <paper-card class="languages">
+                                    <h4>C#</h4>
+                                </paper-card>
+                                <paper-card class="languages">
+                                    <h4>Java</h4>
+                                </paper-card>
+                                <paper-card class="languages">
+                                    <h4>.Net</h4>
+                                </paper-card>
+                                <paper-card class="languages">
+                                    <h4>SQL</h4>
+                                </paper-card>
+                                <paper-card class="languages">
+                                    <h4>HTML5</h4>
+                                </paper-card>
+                                <paper-card class="languages">
+                                    <h4>JavaScript</h4>
+                                </paper-card>
+                                <paper-card class="languages">
+                                    <h4>CSS</h4>
+                                </paper-card>
+                            <h3>Skills, tools and frameworks</h3>
+                                <paper-card class="tools">
+                                    <h4>Server configuration</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>Software architecture</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>jQuery</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>Docker</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>AWS</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>Vagrant</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>Version Control</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>Continuous Integration</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>Agile</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>SASS</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>HAML</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>Ajax</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>Yii</h4>
+                                </paper-card>
+                                <paper-card class="tools">
+                                    <h4>Rails</h4>
+                                </paper-card>
+                            <h3>Business skills</h3>
+                                <paper-card class="life-skills">
+                                    <h4>Project management</h4>
+                                </paper-card>
+                                <paper-card class="life-skills">
+                                    <h4>Product management</h4>
+                                </paper-card>
+                                <paper-card class="life-skills">
+                                    <h4>Team management</h4>
+                                </paper-card>
+                                <paper-card class="life-skills">
+                                    <h4>Entrepreneurship</h4>
+                                </paper-card>
+                                <paper-card class="life-skills">
+                                    <h4>MVP development</h4>
+                                </paper-card>
+                                <paper-card class="life-skills">
+                                    <h4>LEAN startup</h4>
+                                </paper-card>
+                        </div>
+                        <div class="contact-card">
+                            <h3>Contact Bartek</h3>
+                            <div class="narrow-team">
+                                <a href="mailto:bartek@procreative.eu">
+                                    <paper-button class="button-block">
+                                        <i class="fa fa-envelope-o"></i>
+                                        Mail
+                                    </paper-button>
+                                </a>
+                                <a href="https://linkedin.com/in/bartoszw/en" target="_blank">
+                                    <paper-button class="button-block">
+                                        <i class="fa fa-linkedin"></i>
+                                        Linkedin profile
+                                    </paper-button>
+                                </a>
+                                <a href="https://twitter.com/bartoffw" target="_blank">
+                                <paper-button class="button-block">
+                                    <i class="fa fa-twitter"></i>
+                                    Twitter account
+                                </paper-button>
+                                </a>  
+                            </div>
+                            <div class="wide-team">
+                                <a href="mailto:bartek@procreative.eu">
+                                    <i class="fa fa-envelope-o"></i>
+                                    Mail
+                                </a>
+                                <a href="https://linkedin.com/in/bartoszw/en" target="_blank">
+                                    <i class="fa fa-linkedin"></i>
+                                    Linkedin
+                                </a>
+                                <a href="https://twitter.com/bartoffw" target="_blank">
+                                    <i class="fa fa-twitter"></i>
+                                    Twitter
+                                </a>
+                            </div>
+                        </div>
+                      </div>
+                    </iron-collapse>
+                </section>
+                
+                <section id="Ewa" class="team-card">
+                    <button class="heading" tabindex="-1" aria-expanded$="[[isExpanded(opened2)]]" aria-controls="collapse2" onclick="toggle('#collapse2', '.click2')">
+                        <paper-card class="narrow-team">
+                            <div class="photo"></div>
+                            <div class="caption">
+                                <div>
+                                    <h2>Ewa</h2>
+                                    <p>frontend developer &amp; UX designer </br>
+                                    <span class="click-me click2">discover more</span></p>
+                                </div>
+                            </div>
+                        </paper-card>
+                        
+                        <div class="wide-team">
+                            <div class="photo"></div>
+                            <div class="caption">
+                                <div>
+                                    <h2>Ewa</h2>
+                                    <p>frontend developer &amp; UX designer <span class="click-me click2">discover more</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+
+                    <iron-collapse id="collapse2" opened="{{opened2}}">
+                      <div class="collapse-content">
+                        <div>
+                            <p>
+                                User-centered frontend developer. Putting users first to help a business grow. Widely experienced project manager. Working as a designer and developer because of the possibilities it gives to change the world around.
+                            </p>
+                            <div class="skills-grid">
+                                <h3>Languages</h3>
+                                    <paper-card class="languages">
+                                        <h4>HTML5</h4>
+                                    </paper-card>
+                                    <paper-card class="languages">
+                                        <h4>CSS</h4>
+                                    </paper-card>
+                                    <paper-card class="languages">
+                                        <h4>JavaScript</h4>
+                                    </paper-card>
+                                <h3>Skills, tools and frameworks</h3>
+                                    <paper-card class="tools">
+                                        <h4>jQuery</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>Bootstrap</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>Polymer</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>Material Design</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>User Experience</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>Interaction Design</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>Usability</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>Accesibility</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>Optimizing performance</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>Prototyping</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>Wireframing</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>Version Control</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>Bower</h4>
+                                    </paper-card>
+                                    <paper-card class="tools">
+                                        <h4>Agile</h4>
+                                    </paper-card>
+                                <h3>Business skills</h3>
+                                    <paper-card class="life-skills">
+                                        <h4>Communication</h4>
+                                    </paper-card>    
+                                    <paper-card class="life-skills">
+                                        <h4>Project management</h4>
+                                    </paper-card>
+                                    <paper-card class="life-skills">
+                                        <h4>Team management</h4>
+                                    </paper-card>
+                                    <paper-card class="life-skills">
+                                        <h4>MVP development</h4>
+                                    </paper-card>
+                                    <paper-card class="life-skills">
+                                        <h4>Lean startup</h4>
+                                    </paper-card>
+                                    <paper-card class="life-skills">
+                                        <h4>Branding</h4>
+                                    </paper-card>
+                            </div>
+                            <div class="contact-card">
+                                <h3>Contact Ewa</h3>
+                                <div class="narrow-team">
+                                    <a href="mailto:ewa@procreative.eu">
+                                        <paper-button class="button-block">
+                                            <i class="fa fa-envelope-o"></i>
+                                            Mail
+                                        </paper-button>
+                                    </a>
+                                    <a href="https://linkedin.com/in/ewathedoer" target="_blank">
+                                        <paper-button class="button-block">
+                                            <i class="fa fa-linkedin"></i>
+                                            Linkedin profile
+                                        </paper-button>
+                                    </a>
+                                    <a href="https://twitter.com/thedoerdoes" target="_blank">
+                                        <paper-button class="button-block">
+                                            <i class="fa fa-twitter"></i>
+                                            Twitter account
+                                        </paper-button>
+                                    </a>
+                                </div>
+                                <div class="wide-team">
+                                    <a href="mailto:ewa@procreative.eu">
+                                        <i class="fa fa-envelope-o"></i>
+                                        Mail
+                                    </a>
+                                    <a href="https://linkedin.com/in/ewathedoer" target="_blank">
+                                        <i class="fa fa-linkedin"></i>
+                                        Linkedin
+                                    </a>
+                                    <a href="https://twitter.com/thedoerdoes" target="_blank">
+                                        <i class="fa fa-twitter"></i>
+                                        Twitter
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    </iron-collapse>
+                </section>
+                
+            </template>
+
+        </div>
+
+        <references-procreative></references-procreative>
+        <procreative-footer></procreative-footer>
+    </paper-scroll-header-panel>
+        
+    <menu-content></menu-content>
+
+    <script async src="/scripts/main.js"></script>
+    <script>
+        // collapse 
+          function toggle(selector, clickSelector) {
+              document.querySelector(selector).toggle();
+              var element = document.querySelector(clickSelector);
+              if (element.style.display == 'none') {
+                  element.style.display = 'inline-block';
+              }
+              else {
+                  element.style.display = 'none';
+              }
+          }
+
+          document.querySelector('template[is=dom-bind]').isExpanded = function(opened) {
+            return String(opened);
+          };
+    </script>
+
+</body>
+</html>

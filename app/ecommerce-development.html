@@ -1,0 +1,392 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Ecommerce site development. Sell more. Get the reliable online selling tool to make your business grow.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Polymer Starter Kit"/>
+    <title>Ecommerce Website Development and Design</title>
+    
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#2E3AA1">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Tile color for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Ecommerce Website Development and Design">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Ecommerce Website Development and Design">
+
+    <!-- icons -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+    <link rel="icon" sizes="144x144" href="/ms-touch-icon-144x144-precomposed.png">
+    <link rel="icon" sizes="192x192" href="/chrome-touch-icon-192x192.png">
+    <meta name="msapplication-TileImage" content="/ms-touch-icon-144x144-precomposed.png">
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="/styles/main.css">
+    <!-- endbuild-->
+
+    <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+    <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+    <!-- imports from polymer elements -->    
+    <link rel="import" href="/bower_components/polymer/polymer.html">
+    <link rel="import" href="/elements/elements.html">
+    
+    <link rel="import" href="/elements/back-to-portfolio.html">
+    <link rel="import" href="/bower_components/google-youtube/google-youtube.html">
+    
+    <link rel="stylesheet" href="/styles/jquery.mobile-slider.css">
+    
+    <style is="custom-style">
+       html, body {
+            background: white;
+            text-align: center;
+            height: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        paper-scroll-header-panel {
+          height: 100%;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: #009688;
+
+          /* background for toolbar when it is at its full size */
+          --paper-scroll-header-panel-full-header: {
+            background-image: url(/images/ontime.jpg);
+          };
+
+          /* background for toolbar when it is condensed */
+          --paper-scroll-header-panel-condensed-header: {
+            background-color: var(--default-primary-color);
+          };
+            
+          --paper-scroll-header-header: {
+            pointer-events: none;
+          }
+        }
+        
+        paper-toolbar h1 {
+            font-size: 1.6em;
+        }
+        
+        @media screen and (max-width: 414px) {
+            paper-toolbar h1 {
+                font-size: 1.2em;
+            }
+        }
+        
+        /*content styling*/
+        h2, h3 {
+            font-family: 'Roboto Slab';
+            font-weight: 500;
+        }
+        .parent {
+            display: table;
+            width: 100%;
+        }
+        .screen {
+            display: table-cell;
+            vertical-align: middle;
+            box-sizing:border-box;
+            height: 100vh;
+            background: #009688;
+            color: var(--text-primary-color);
+            padding: 15%;
+        }
+        .screen h2 {
+            font-size: 4em;
+        }
+        .screen p {
+            font-size: 1.6em;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .screen p strong {
+           color: rgba(255, 255, 255, 1);
+        }
+        @media screen and (min-width: 1440px) {
+            .screen {
+                padding: 15% 20%;
+            }
+        }
+        @media screen and (max-width: 768px){
+            .screen {
+                padding: 5%;
+            }
+        }
+       
+        @media screen and (max-width: 767px){
+            .screen h2 {
+                font-size: 2em; 
+            }
+            .screen p {
+                font-size: 1.2em;
+            }
+        }
+        @media screen and (min-width:768px) and (max-width:1280px) {
+            .screen h2 {
+                font-size: 3em; 
+            }
+        }
+        .content {
+            width: 100%;
+        }
+        /*the blend's style used in homepage how we do it*/
+        .blend {
+            background: rgba(255,255,255,0.7);
+            padding: 5%;
+            border-radius: 16px;
+        }
+        paper-card.image{
+            margin-top: 3em;
+            width: 80%;
+        }
+        .image img {
+            width: 100%;
+            height: auto;
+        }
+        .first-screen {
+            display: block;
+            height: auto;
+            padding-top: 5%;
+        }        
+        google-youtube {
+            position: relative;
+        }
+        .timeline {
+            background: transparent;
+            height: auto;
+            border-left: 1px solid;
+            text-align: left;
+            padding-top: 2em;
+            position: relative;
+        }
+        .timeline iron-icon {
+            position: absolute;
+            top: -0.8em;
+            left: -1em;
+            width: 2em;
+            height: 2em;
+        }
+        .timeline li h3 {
+            font-size: 1.4em;
+        }
+        .timeline li p {
+            font-size: 1.2em;
+        }
+        @media screen and (min-width: 1440px) {
+            .timeline li p {
+                font-size: 1.4em;
+            }
+        }
+        .timeline li {
+            margin-left: -1.6em;
+        }
+        .mock {
+            height: 50%;
+            width: auto;
+        }
+        .mobile-slider {
+            margin-top: -40vh;
+        }
+    </style>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-4898616-14', 'auto');
+      ga('send', 'pageview');
+    </script>
+</head>
+<body unresolved class="fullbleed layout vertical">
+    
+        <paper-scroll-header-panel class="flex" no-dissolve condenses header-height="50vh" condensed-header-height="64" id="header">
+            
+            <paper-toolbar class="supertall portfolio">
+                <a href="/" class="site-logo" title="ProCreative Home"><iron-icon src="/images/logo-white.png"></iron-icon></a>
+                <div class="flex"></div>
+                <menu-button class="top-menu"></menu-button>
+                <div class="bottom title hideable-title"><h1>Sell more</h1></div>  
+            </paper-toolbar>
+            
+            <div class="content">
+                <section>
+                    <div class="screen first-screen">
+                        <h2>Empowering sales growth</h2>
+                        <p>
+                            For online vendors we've had a chance to create both the ecommerce from scratch, as well as customize popular <strong>ecommerce engines</strong> like Prestashop or WooCommerce. We have analyzed the sales flow, shipment processes, payement menthods and translated it into effective software solutions.
+                        </p>
+                        <p>
+                            Payment <strong>integration</strong>, system <strong>security</strong>, backups and server <strong>maintenance</strong> have been on our side. This way our clients can focus on less technical part to grow their business.
+                        </p>
+                    </div>
+                </section>
+                
+                <section class="parent">
+                    <div class="screen">
+                        <div>
+                            <h2>Case study</h2>
+                            <p>
+                                <a href="http://waggle.com.au/" target="_blank" class="link">Waggle</a> is the online store with the headquarters in Australia, they provide variety of dog gear. The owners looked for fully customized solution, so they decided to built <strong>the online store from scratch</strong> with us without using any ready-made engine.
+                            </p>
+                            <paper-card class="image" elevation="5">
+                                <google-youtube 
+                                  video-id="fwox9k4qiXg"
+                                  rel="0"
+                                  fluid
+                                  start="0"
+                                  autoplay="0">
+                                </google-youtube>
+                            </paper-card>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="parent">
+                    <div class="screen">
+                        <h2>Our role</h2>
+                        <p>
+                            We are the <strong>tech department</strong> for Waggle. In this case the client provides interface design, flows and graphics to be implemented.
+                        </p>
+                        <p>
+                            Since 2011 we have been responsible for the backend development and frontend implementation of the web shop. Waggle owners since the beginning wanted to have a <strong>totally custom solution</strong>, so we designed software architecture, implemented the solution, optimized it with the growing traffic. 
+                        </p>
+                        <p>
+                            Currently we are still iterating, introducing new functionalities and improving internals of the system. The ecommerce is developing all the time so the story will be continued.
+                        </p>
+                    </div>
+                </section>
+                
+                <section class="parent">
+                    <div class="screen">
+                        <h2>History</h2>
+                        <div class="timeline">
+                            <iron-icon icon="expand-less"></iron-icon>
+                            <ul>
+                                <li>
+                                    <h3>2015</h3>
+                                    <p>To improve speed and scalability of the system we switched the hosting provider to AWS stack. Mobile version of the website was improved.</p>
+                                </li>
+                                <li>
+                                    <h3>2014</h3>
+                                    <p>A series of A/B tests of strategic pages was performed to improve the conversion rate. The checkout process got simplified.</p>
+                                </li>
+                                <li>
+                                    <h3>2013</h3>
+                                    <p>To improve the speed of the website with the growing userbase, content compression and caching were introduced. Business reports have been added to allow the owners easily see what's going on with the sales, margins, conversion rates, etc.</p>
+                                </li>
+                                <li>
+                                    <h3>2012</h3>
+                                    <p>
+                                        We migrated all the existing data from the version of Waggle ecommerce that they used before 2011. The new layout of the website was implemented,
+                                        PayPal Express integration completed, and the gift vouchers feature added. We moved the static assets to a CDN server.
+                                    </p>
+                                </li>
+                                <li>
+                                    <h3>2011</h3>
+                                    <p>We discussed the possible technologies and proposed the best for the particular needs of the client. We designed software architecture and implemented the first version of Waggle.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="parent">
+                    <div class="screen">
+                        <h2>We help to sell</h2>
+                    </div>
+                </section>
+                
+                <div class="phone-slider mobile-slider">
+                    <div class="slides">
+                        <div class="slide active">
+                            <img src="/images/portfolio/waggle-home-mobile.jpg" alt="Homepage of waggle.com.au" />
+                        </div>
+                        <div class="slide">
+                            <img src="/images/portfolio/waggle-item-page_mobile.jpg" alt="Screen with some item to buy and social media integration in Waggle's ecommerce" />
+                        </div>
+                        <div class="slide">
+                            <img src="/images/portfolio/waggle-payment-mobile.jpg" alt="Payement options possible in Waggle's ecommerce (credit card, PayPal, Direct Deposit)" />
+                        </div>
+                        <div class="slide">
+                            <img src="/images/portfolio/waggle-models-mobile.jpg" alt="Screen showing interaction with clients. Mobile dog gallery co-created by clients" />
+                        </div>
+                        <div class="slide">
+                            <img src="/images/portfolio/waggle-filtering-mobile.jpg" alt="Filtering and sorting the products in Waggle" />
+                        </div>
+                        <div class="slide">
+                            <img src="/images/portfolio/waggle-shop-mobile.jpg" alt="Item mobile display in Waggle" />
+                        </div>
+                    </div>
+                    <img class="phone" src="/images/iphone6-white.png" alt="mobile phone frame"/>
+                </div>
+
+                <section class="parent">
+                    <div class="screen">  
+                        <div>
+                            <h2>Technology</h2>
+                            <p>
+                                The website has been created in a modular fashion so the whole system is loosely coupled and allows for adding new features easily. The website is integrated with a set of 3rd party services like payment providers, bookkeeping / repository trackers, and business analytics collectors.
+                            </p>
+                            <p>
+                                Automatic tests have been prepared to make sure the software is stable regardless of the changes that are being introduced.
+                                A special care was taken when optimizing the speed of the website. We performed a series of speed tests and selected solutions that are optimal for the website and the current needs of the business.
+                            </p>
+                        </div> 
+                    </div>
+                </section>
+        
+            </div> <!--the end of scroll header content -->
+            
+            <back-to-portfolio text="UX" link="ux-designer"></back-to-portfolio>
+            <procreative-footer></procreative-footer>
+            
+        </paper-scroll-header-panel>
+        
+        <menu-content></menu-content>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/scripts/hammer.js"></script>
+    <script src="/scripts/jquery.mobile-slider.js"></script>
+    <script async src="/scripts/main.js"></script>
+    <script>
+        // jquery mobile slider
+        $(document).ready(function() {
+            $('.phone-slider').mobileSlider({
+                topBorderPercent: 0.12,
+                leftBorderPercent: 0.055,
+                screenWidthPercent: 0.9,
+                screenHeightPercent: 0.77,
+                slideMargin: 20
+            });
+            setTimeout(function() {
+                $(window).trigger('resize');
+            }, 2000);
+        });
+    </script>
+
+</body>
+</html>

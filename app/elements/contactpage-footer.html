@@ -1,0 +1,74 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/bower_components/iron-icons/image-icons.html">
+
+
+<dom-module id="contactpage-footer">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+                display: block;
+                background-color: var(--divider-color);
+            }
+            
+            paper-card {
+                background-color: var(--primary-text-color);
+                color: var(--text-primary-color);
+                display: block;
+                height: auto;
+                padding: 5%;
+                text-align: center;
+            }
+            p {
+                font-size: 1em;
+                font-weight: 200;
+                font-stretch: extra-expanded;
+            }
+            .low-footer {
+                padding: 1em;
+            }
+            h3 {
+                font-size: 1.2em;
+                font-weight: 100;
+            }
+            footer {
+                position: relative;
+            }
+            .sun {
+                font-size: 0.8em;
+            }
+            .sun img {
+                height: 1.5em;
+                width: auto;
+                vertical-align: bottom;
+            }
+        </style>
+        
+            <paper-card elevation="4">
+                <footer>
+                    <div class="low-footer">
+                        <p>&copy; <span id="year"></span> ProCreative</p>
+                        <p class="sun">Developing with <img src="/images/sun.svg" alt="the sun and sea" title="the sun and sea" /></p>
+                    </div>
+                </footer>
+            </paper-card>
+        
+    </template>
+    <script>
+
+        Polymer({
+            is: 'contactpage-footer',
+            
+            attached: function() {
+                var year = document.getElementById('year');
+                if (year !== null) {
+                    var d = new Date();
+                    year.innerHTML = d.getFullYear();
+                }
+            }
+        });
+        
+    </script>
+</dom-module>

@@ -1,0 +1,244 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<link rel="import" href="/bower_components/iron-form/iron-form.html">
+<link rel="import" href="/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="/bower_components/gold-email-input/gold-email-input.html">
+<link rel="import" href="/bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="/bower_components/paper-tooltip/paper-tooltip.html">
+
+<link rel="import" href="/bower_components/neon-animation/neon-animation.html">
+<link rel="import" href="/bower_components/neon-animation/neon-animation-runner-behavior.html">
+
+
+<dom-module id="contact-forms">
+    <template>
+        <style>
+            .person {
+                position: relative;
+            }
+            paper-input, paper-textarea, gold-email-input {
+                --paper-input-container-input: {
+                    font-size: 1em;
+                    line-height: normal;
+                };
+                --paper-input-container-label: {
+                    font-size: 0.9em;
+                    color: var(--dark-primary-color);
+                };
+                --paper-input-container-label-focus: {
+                    color: var(--dark-primary-color);
+                };
+            }
+            paper-toast {
+                z-index: 100;
+                font-size: 2em;
+                background: #009688;
+                color: var(--text-primary-color);
+            }
+            paper-tooltip {
+                --paper-tooltip-background: var(--primary-background-color);
+            }
+            paper-tooltip {
+                --paper-tooltip: {
+                    font-size: 1em;
+                    color: var(--primary-text-color);
+                    text-align: center;
+                };
+            }
+            h2 {
+                font-size: 4em;
+                font-weight: 300;
+                color: var(--secondary-text-color);
+                margin: 0.5em;
+            }
+            p {
+                font-size: 1.6em;
+                font-weight: 400;
+                color: var(--default-primary-color);
+            }
+            p.regular {
+                 color: var(--secondary-text-color);
+            }
+            a {
+                text-decoration: none;
+                transition: all 0.5s;
+                padding-top: 0.5em;
+            }
+            a:hover section, a:active section, a:focus section {
+                border: 1px solid var(--default-primary-color);
+                transition: all 0.2s;
+            }
+            a#hire {
+                display: block;
+            }
+            hire-redirection p {
+                color: var(--default-primary-color);
+            }
+            .hire-redirection {
+                margin: 2em 0 4em;
+                padding: 1em 0;
+            }
+            .hire-redirection h2 {
+                margin-bottom: 0.5em;
+            }
+            .content {
+                width: 100%;
+            }
+            .form-content {
+                padding: 0 15% 15%;
+                text-align: left;
+            }
+            .form-content paper-button {
+                margin-top: 1em;
+            }
+            paper-button {
+                background: var(--default-primary-color);
+                color: var(--text-primary-color);
+                padding: 1em;
+                font-size: 1.2em;
+                border-radius: 16px;
+                transition: all 0.5s;
+            }
+            @media screen and (max-width: 767px){
+                h2 {
+                    font-size: 2em; 
+                }
+                p {
+                    font-size: 1.2em;
+                }
+            }
+            @media screen and (max-width: 767px) {
+                h2 {
+                    font-size: 1.8em;
+                    font-weight: 300;
+                }
+                .form-content {
+                    padding: 0 5% 5%;
+                }
+            }
+            @media screen and (min-width: 768px) {
+                h2 {
+                    font-size: 4em;
+                    font-weight: 300;  
+                }
+            }
+            @media screen and (min-width: 1025px) {
+                .form-content {
+                    padding: 0 30% 5%;
+                }  
+                .button-holder {
+                    text-align: left;
+                }
+                .button-holder paper-button:hover, .button-holder paper-button:active, .burtton-holder paper-button:focus {
+                    background: var(--dark-primary-color);
+                    transition: all 0.2s;
+                }
+                a section {
+                    border: 1px solid transparent;
+                    margin: 0 15%;
+                }
+            }
+            @media screen and (min-width: 768px) and (max-width: 1023px) {                
+                #everything {
+                    margin: 14% 0 10%;
+                }
+            }
+        </style>
+        
+        <div class="content">
+            <!-- hire ussuggestion in contact 
+            <a href="/hire-procreative" id="hire">
+                <section class="hire-redirection">
+                    <h2>Use the button below to</h2>
+                    <paper-button raised>start your project with us</paper-button>
+                </section>
+            </a>
+            
+            <section>
+                <p>
+                    If you need to contact us immediately, call ewa.procreative on Skype or ewa@procreative.eu on hangouts.
+                    If you want to send us the mail, use the short form below.
+                </p>
+            </section>
+            -->
+
+            <section id="everything">
+                <h2>Let us hear you</h2>
+                <p class="regular">use the form below</p>
+                <section class="form-content">
+                    <form is="iron-form" id="form" method="post" action="/backend/mailsend.php">
+                        <input type="hidden" name="subject" value="Contact from Contact Form" />
+                        <p class="person">
+                            <paper-textarea id="info" name="message" error-message="C'mon, tell us something interesting" label="Your message" onblur="this.validate()" value="" required></paper-textarea>
+                            <paper-tooltip for="info" position="top" fit-to-visble-bounds>The line will expand when needed, no worries about the space</paper-tooltip>
+                            <paper-input name="name" label="Full name"></paper-input>
+                            <gold-email-input name="email" error-message="Write full e-mail address, we really want to answer" label="The mail to contact you back" onblur="this.validate()" required id="mail">
+                            </gold-email-input>
+                            <paper-tooltip for="mail" position="top" fit-to-visble-bounds>We take care of your personal data, NO selling promise</paper-tooltip>
+                        </p>
+                        <div class="button-holder">
+                            <paper-button raised onclick="submitForm();">send your message</paper-button>
+                        </div>
+                    </form>
+                    <paper-toast id="success" text="Success! We'll contact you soon."></paper-toast>
+                </section>
+            </section>
+        </div>
+        
+    </template>
+    
+    <script>
+
+        Polymer({
+            is: 'contact-forms',
+            
+            behaviors: [
+                Polymer.NeonAnimationRunnerBehavior
+            ],
+
+            properties: {
+                animationConfig: {
+                    value: function() {
+                        return {
+                            'entry': [{
+                                name: 'cascaded-animation',
+                                animation: 'scale-up-animation',
+                                nodedelay: 1000,
+                                timing: {
+                                    duration: 1000
+                                },
+                                nodes: [
+                                    this.$.hire,
+                                    this.$.everything
+                                ]
+                            }]
+                        };
+                    }
+                }
+            },
+            
+            ready: function() {
+                this.playAnimation('entry');
+            }
+        });
+        
+        (function(global) {
+            'use strict';
+            var form, success;
+
+            global.submitForm = function() {
+                form = document.getElementById('form');
+                success = document.getElementById('success');
+                form.addEventListener('iron-form-submit', displayToast);
+                form.submit();
+            };
+            var displayToast = function() {
+                success.show();
+                form.reset();
+            };
+        }(this));
+        
+    </script>
+</dom-module>

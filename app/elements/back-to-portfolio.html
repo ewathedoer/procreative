@@ -1,0 +1,100 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+
+
+
+<dom-module id="back-to-portfolio">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+                display: block;
+                background-color: transparent;
+                text-align: center;
+                padding: 2em 0 0;
+            }
+            paper-card {
+                background-color: transparent;
+                width: 100%;
+                display: inline-block;
+                padding: 1.5em 0;
+                line-height: 1em;
+            }
+            iron-icon.left {
+                margin-right: 1em;
+            }
+            iron-icon.right {
+                margin-left: 1em;
+            }    
+            a {
+                color: rgba(255,255,255,0.9);
+                transition: all 0.5s;
+                font-size: 1.4em;
+                display: block;
+            }
+            a:hover, a:active, a:focus {
+                color: var(--default-primary-color);
+                transition: all 0.2s;
+            }
+            @media screen and (max-width: 767px) {
+                paper-card.back-card {
+                    box-shadow: 
+                        0 4px 5px 0 rgba(0, 0, 0, 0), 
+                        0 1px 10px 0 rgba(0, 0, 0, 0.12), 
+                        0 2px 4px -1px rgba(0, 0, 0, 0);
+                }
+            }
+            @media screen and (min-width: 768px), screen and (max-width: 767px) and (orientation: landscape) {
+                :host {
+                    height: 4em;
+                    padding: 0;
+                }
+                a {
+                    float: left;
+                    width: 50%;
+                }
+                paper-card {
+                    padding: 1em 0;
+                }
+            }
+            @media screen and (min-width: 1025px) {
+                 a:hover, a:active, a:focus {
+                    color: var(--text-primary-color);
+                    background-color: var(--default-primary-color);
+                    transition: all 0.2s;
+                }
+                
+            }
+        </style>
+        <section class="next">
+            <a href="/portfolio">
+                <paper-card elevation="2" class="back-card">
+                    <iron-icon icon="arrow-back" class="left"></iron-icon><span>back to portfolio</span>
+                </paper-card>
+            </a>
+            <a href="/{{link}}">
+                <paper-card elevation="2">
+                    <span>{{text}}</span><iron-icon icon="arrow-forward" class="right"></iron-icon>
+                </paper-card>
+            </a>
+        </section>
+    </template>
+    <script>
+
+        Polymer({
+            is: 'back-to-portfolio',
+            properties: {
+                text: {
+                    type: String,
+                    value: null
+                },
+                link: {
+                    type: String,
+                    value: null
+                }
+            }
+        });
+       
+    </script>
+</dom-module>

@@ -1,0 +1,73 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+
+
+<dom-module id="menu-button">
+    <template>
+        <style>
+            :host {
+                position:fixed;
+                top: 5px;
+                right: 15px;
+                height: 54px;
+            }
+            iron-icon {
+                color: rgb(255,255,255);
+                height: 40px;
+                width: 40px;
+                display: inline-block;
+            }
+            h2 {
+                display: inline-block;
+                color: rgb(255,255,255);
+                font-size: 1.2em;
+                margin: 0;
+                line-height: 54px;
+                vertical-align: middle;
+            }
+            paper-button {
+                padding-top: 8px;
+            }
+            paper-button:hover, paper-button:active, paper-button:focus {
+                background-color: var(--default-primary-color);
+            }
+            
+            @media screen and (max-width: 414px) {
+                h2 {
+                    display: none;
+                }
+                :host {
+                    right: 0.5%;
+                    top: 3px;
+                }
+            }
+            @media screen and (min-width: 415px) {
+                paper-button {
+                    padding: 0 1em;
+                }
+            }
+            @media screen and (max-width: 600px) and (orientation: landscape) {
+                :host {
+                    top: 0;
+                }
+            }
+        </style>
+        
+        <a href="#" onclick="document.getElementById('menu-content').className += ' active'; return false">
+            <paper-button tabindex="-1">
+                <h2>Menu</h2>
+                <iron-icon icon="menu"></iron-icon>
+            </paper-button>
+        </a>
+        
+    </template>
+    <script>
+
+        Polymer({
+            is: 'menu-button',
+        });
+        
+    </script>
+</dom-module>

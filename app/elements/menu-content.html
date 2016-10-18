@@ -1,0 +1,129 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+
+
+<dom-module id="menu-content">
+    <template>
+        <style>
+            /*menu content styling*/
+            .menu-container {
+                position: fixed;
+                top: 0;
+                right: -350px;
+                bottom: 0;
+                width: 350px;
+                padding: 2em 3em;
+                background: var(--default-primary-color);
+                overflow: auto;
+                box-sizing: border-box;
+                transition: right 0.2s;
+            }
+            .menu-container.active {
+                right: 0;
+                transition: right 0.2s;
+            }
+            .menu {
+                clear: both;
+                margin: 0;
+                padding: 0;
+            }
+            .menu li {
+                list-style-type: none;
+            }
+            .menu li a {
+                display: block;
+                text-decoration: none;
+                color: var(--text-primary-color);
+                text-align: right;
+                font-size: 2em;
+                margin-bottom: 1em;
+            }
+            .menu li a:hover, .menu li a:focus, .menu li a:active,
+            #close-menu:hover, #close-menu:focus, #close-menu:active {
+                color: var(--secondary-text-color);
+            }
+            #close-menu {
+                margin: 0.8em 0 2em;
+                float: right;
+                width: 4em;
+                height: 4em;
+                color: var(--text-primary-color);
+            }
+            hr {
+                border: 0;
+                height: 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.5);
+                margin: 5em 0 1em;
+            }
+            .social {
+                float: left;
+                color: var(--text-primary-color);
+            }
+            .subtitles {
+                font-size: 1.2em;
+                font-weight: 300;
+                color: var(--text-primary-color);
+                padding-top: 1em;
+                text-align: right;
+            }
+            .subtitles iron-icon {
+                margin-right: 1em;
+            }
+            @media screen and (max-width: 767px) {
+                 .menu-container {
+                    right: -100%;
+                    width: 100%;
+                    background: rgba(3,169,244,0.9) !important;
+                }
+                .menu li a {
+                    text-align: center;
+                }
+                .menu li a:hover, .menu li a:focus, .menu li a:active,
+                #close-menu:hover, #close-menu:focus, #close-menu:active {
+                    color: var(--primary-text-color);
+                }
+            }
+            
+        </style>
+        
+        <aside class="menu-container" id="menu-content">
+            <a href="#" onclick="document.getElementById('menu-content').className = document.getElementById('menu-content').className.replace(/(?:^|\s)active(?!\S)/g , ''); return false">
+                <paper-icon-button icon="arrow-forward" id="close-menu" tabindex="-1"></paper-icon-button>
+            </a>
+            <ul class="menu">
+                <li><a href="/software-development">Our Credo</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/team">Team</a></li>
+                <li><a href="/hire-procreative">Hire Us</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/key-facts">In A Nutshell</a></li>
+            </ul>
+            <hr/>
+            <p class="subtitles">
+                <iron-icon src="/images/logo-white.png"></iron-icon> ProCreative </br> Software Development
+            </p>
+        </aside>
+    </template>
+    <script>
+
+        Polymer({
+            is: 'menu-content',
+            
+            ready: function() {
+                var home = Polymer.dom(this.root);
+                var menuItems = home.querySelectorAll('.menu a');
+                for (var i = 0; i < menuItems.length; i++) {
+                    var el = menuItems[i];
+                    el.addEventListener('focus', function() {
+                        home.querySelector('#menu-content').classList.add('active');
+                    });
+                    el.addEventListener('blur', function() {
+                        home.querySelector('#menu-content').classList.remove('active');
+                    });
+                }
+            }
+        });
+        
+    </script>
+</dom-module>

@@ -1,0 +1,397 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<link rel="import" href="/bower_components/iron-form/iron-form.html">
+<link rel="import" href="/bower_components/paper-input/paper-input.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/paper-input/paper-textarea.html">
+<link rel="import" href="/bower_components/gold-email-input/gold-email-input.html">
+<link rel="import" href="/bower_components/paper-toggle-button/paper-toggle-button.html">
+<link rel="import" href="/bower_components/paper-slider/paper-slider.html">
+<link rel="import" href="/bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="/bower_components/paper-tooltip/paper-tooltip.html">
+
+<link rel="import" href="/bower_components/neon-animation/neon-animation.html">
+<link rel="import" href="/bower_components/neon-animation/neon-animation-runner-behavior.html">
+
+<link rel="import" href="/bower_components/iron-collapse/iron-collapse.html">
+<link rel="import" href="/bower_components/paper-checkbox/paper-checkbox.html">
+
+
+<dom-module id="hire-us">
+    <template is="dom-bind">
+        <style>
+            paper-input, paper-textarea, gold-email-input {
+                --paper-input-container-input: {
+                    font-size: 1em;
+                    line-height: normal;
+                    text-transform: lowercase;
+                };
+                --paper-input-container-label: {
+                    font-size: 0.9em;
+                    color: var(--dark-primary-color);
+                };
+                --paper-input-container-label-focus: {
+                    color: var(--dark-primary-color);
+                };
+            }
+            paper-checkbox {
+                --paper-checkbox-checked-color: var(--default-primary-color);     
+            };
+            paper-toast {
+                z-index: 100;
+                font-size: 2em;
+                background: #009688;
+                color: var(--text-primary-color);
+            }
+            paper-tooltip {
+                --paper-tooltip-background: var(--primary-background-color);
+            }
+            paper-tooltip {
+                --paper-tooltip: {
+                    font-size: 1em;
+                    color: var(--primary-text-color);
+                    text-align: center;
+                };
+            }
+            p {
+                font-size: 1.6em;
+                font-weight: 400;
+                color: var(--primary-text-color);
+                margin-top: 0;
+            }
+            h3 {
+                color: var(--primary-text-color);
+            }
+            
+            #form paper-toggle-button {
+                display: inline-block;
+                --paper-toggle-button-checked-button-color: var(--default-primary-color);
+                --paper-toggle-button-checked-bar: {
+                    background-color: var(--default-primary-color);
+                };
+            }
+            .choice.block {
+                display: block;
+                text-align: left;
+                margin-top: 1em;
+            }
+            .choice.block paper-slider {
+                /*display: inline-flex;*/
+                width: 75%;
+            }
+            .choice.block span {
+                display: block;
+            }
+
+            .choice.inline {
+                display: table;
+                width: 100%;
+            }
+            .choice.inline > * {
+                display: table-cell;
+                vertical-align: bottom;
+            }
+            .choice.inline > span {
+                padding-bottom: 0.4em;
+            }
+            .choice.inline > span#in-area {
+                width: 1.5em;
+            }
+            
+            .form-fields {
+                position: relative;
+            }
+            
+            paper-button {
+                margin-top: 3em;
+            }
+            
+            form > * {
+                background: white;
+            }
+
+            paper-card {
+                width: 95%;
+                padding: 1em;
+                margin-bottom: 1em;
+            }
+            paper-button {
+                background: var(--default-primary-color);
+                color: var(--text-primary-color);
+                padding: 1em;
+                font-size: 1.2em;
+                border-radius: 16px;
+                transition: all 0.5s;
+            }
+            
+            @media screen and (max-width: 767px) {
+                h3 {
+                    margin: 2em 0 0.3em;
+                    font-size: 1.6em;
+                    font-weight: 900;
+                    font-stretch: extra-expanded;
+                }
+                p {
+                    font-size: 1.2em;
+                }
+                .choice {
+                    display: block;
+                    margin-bottom: 1em;
+                    padding-top: 0.5em;
+                }
+                .choice.block paper-slider {
+                    width: 100%;
+                }
+                .choice.first {
+                    margin-bottom: 0;
+                }
+                #project {
+                    margin-top: 2em;
+                }
+                paper-button.hire-us {
+                    margin-top: 2em;
+                }
+                .heading.hire-us {
+                    font-size: 1em;
+                    padding: 1em;
+                }
+            }
+            @media screen and (min-width: 768px) {
+                h3 {
+                    margin: 2em 0 0.3em;
+                    font-size: 2em;
+                    font-weight: 900;
+                    font-stretch: extra-expanded;
+                }
+                #audience h3 {
+                    margin-bottom: 1.1em;
+                }
+                .choice {
+                    display: block;
+                    margin-top: 1em;
+                }
+                .choice.first {
+                    margin: 0;
+                }
+                .choice.sex {
+                    display: inline;
+                }
+            }
+            @media screen and (min-width: 1025px) {
+                #buttonholder {
+                    transition: all 0.5s;
+                }
+                #buttonholder paper-button:hover, #buttonholder paper-button:active, #buttonholder paper-button:focus {
+                    background: var(--dark-primary-color);
+                    transition: all 0.2s;
+                }
+            }
+            
+            /*collapse*/
+             .heading {
+                margin-top: 1em;
+                padding: 1em;
+                background-color: var(--text-primary-color);
+                border: 0.5px solid rgba(3, 169, 244, 0.9);
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                font-size: 1.2em;
+                cursor: pointer;
+                -webkit-tap-highlight-color: rgba(0,0,0,0);
+                width: 100%;
+                height: auto;
+                transition: all 0.5s;
+            }
+            .heading h4 {
+                font-size: 1.2em;
+                font-weight: 400;
+                margin-top: 0;
+                margin-bottom: 0;
+                color: var(--dark-primary-color);
+                transition: all 0.5s;
+            }
+            button.heading.hire-us {
+                text-align: left;
+            }
+            .collapse-content {
+                padding: 15px;
+                border: 1px solid #dedede;
+                border-top: none;
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                background: var(--text-primary-color);
+            }
+            .heading:hover,
+            .heading:focus,
+            .heading:active {
+                background-color: var(--primary-background-color);
+                transition: all 0.2s;
+            }
+            .heading:hover, 
+            .heading:focus,
+            .heading:active {
+                color: var(--primary-text-color);
+                transition: all 0.2s;
+            }
+            .collapse-content p {
+                font-size: 1.2em;
+            }
+            iron-collapse {
+                outline: none;
+            }
+            
+        </style>
+        
+        <form is="iron-form" id="form" method="post" action="/backend/mailsend.php">
+            <input type="hidden" name="subject" value="Contact from Hire Us" />
+            <div id="project">
+                <h3 id="project-intro">Project intro</h3>
+                <p class="form-fields">
+                    <paper-textarea name="project-description" id="description" error-message="Don't forget about it" label="Describe the project in your own words" onblur="this.validate()" value="" required>
+                    </paper-textarea>
+                    <paper-tooltip position="top" for="description">The line will follow your creativity, no worries about the space</paper-tooltip>
+                    <paper-textarea name="project-dates" error-message="Without it we can't tell you whether it's possible" label="Any deadlines you already have?" onblur="this.validate()" value="" required>
+                    </paper-textarea>
+                </p>
+            </div>
+
+            <div id="person">
+                <h3>Let us contact you</h3>
+                <p class="form-fields">
+                    <paper-input name="person-name" label="Full name"></paper-input>
+                    <gold-email-input name="person-mail" id="mail" label="Your mail" error-message="Write full e-mail to start your awesome project" onblur="this.validate()" required></gold-email-input>
+                    <paper-tooltip position="top" for="mail" fit-to-visible-bounds>We take care of your personal data, NO selling promise</paper-tooltip>
+                </p>
+                <p>Wanna leave your <strong>call contact</strong>?</p>
+                <p class="form-fields">
+                    <span class="choice">
+                        <paper-toggle-button name="person-hangout">hangout</paper-toggle-button> or 
+                        <paper-toggle-button name="person-skype">skype</paper-toggle-button>
+                    </span>
+                    <span class="choice" id="choice">
+                        <paper-input name="person-contact-nick" label="your hangout / skype name"></paper-input>
+                    </span>
+                    <paper-tooltip position="top" for="choice" fit-to-visible-bounds>We will firstly mail you and schedule a call, NO night calling promise</paper-tooltip>
+                </p>
+            </div>
+            
+            <section id="audiencebox" class="audience-info">
+                <button class="heading" aria-expanded$="[[isExpanded(opened1)]]" aria-controls="collapse1" onclick="return toggle('#collapse1')">
+                    <h4><paper-checkbox name="audience" id="audience-checkbox"></paper-checkbox> Intro to <strong>product users</strong></h4>
+                </button>
+
+                <iron-collapse id="collapse1" tabindex="0" opened="{{opened1}}">
+                  <div class="content">
+                    <div>
+                        <div id="audience">
+                            <h3>My project audience</h3>
+                            <p>
+                                Target users are 
+                                <span class="choice sex">
+                                    <paper-toggle-button name="audience-female" checked>females</paper-toggle-button> 
+                                    <paper-toggle-button name="audience-male" checked>males</paper-toggle-button>
+                                </span>
+                                aged between
+                                <span class="choice block">
+                                    <paper-slider name="audience-age-from" pin min="1" max="130" value="16" editable></paper-slider>
+                                    <span>and</span>
+                                    <paper-slider name="audience-age-to" min="1" max="130" value="55" pin editable></paper-slider>
+                                </span>
+                            </p>
+                            <p>                                            
+                                <span class="choice first">
+                                    living <paper-toggle-button name="audience-global">all around the world /</paper-toggle-button>
+                                </span>
+                                <span class="choice inline">
+                                    <span id="in-area">in</span> <paper-input name="audience-region" label="write the country / area"></paper-input>
+                                </span>
+                                <span class="choice">
+                                    who want to <paper-textarea name="audience-goal" id="audience-goal" error-message="What problem do you want to solve?" label="the goal they want to achieve" onblur="this.validate()" value=""></paper-textarea>
+                                </span>
+                                <span class="choice">
+                                    because <paper-textarea name="audience-character" id="audience-character" error-message="How does your product influence their life?" label="why they want it" onblur="this.validate()" value=""></paper-textarea>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                  </div>
+                </iron-collapse>
+            </section>
+                
+            
+            <div id="buttonholder">
+                <paper-button raised onclick="submitForm(this)">Send the project intro</paper-button>
+            </div>
+        </form>
+        <paper-toast id="success" text="Great job! We'll contact you soon."></paper-toast>
+        
+    </template>
+    <script>
+
+        Polymer({
+            is: 'hire-us',
+            
+            behaviors: [
+                Polymer.NeonAnimationRunnerBehavior
+            ],
+
+            properties: {
+                animationConfig: {
+                    value: function() {
+                        return {
+                            'entry': [{
+                                name: 'cascaded-animation',
+                                animation: 'scale-up-animation',
+                                nodedelay: 1000,
+                                timing: {
+                                    duration: 1000
+                                },
+                                nodes: [
+                                    this.$.project,
+                                    this.$.audience,
+                                    this.$.person,
+                                    this.$.audiencebox,
+                                    this.$.buttonholder
+                                ]
+                            }]
+                        };
+                    }
+                }
+            },
+            
+            ready: function() {
+                this.playAnimation('entry');
+            }
+        });
+        
+        (function(global) {
+            'use strict';
+            var form, success;
+
+            global.submitForm = function() {
+                form = document.getElementById('form');
+                success = document.getElementById('success');
+                
+                if (form.validate()) {
+                    form.addEventListener('iron-form-submit', displayToast);
+                    form.submit();
+                }
+                else {
+                    document.getElementById('header').scroller.scrollTop = document.getElementById('project-intro').offsetTop;
+                    return false;
+                }
+            };
+            var displayToast = function() {
+                success.show();
+                form.reset();
+            };
+        }(this));
+        
+        // collapse 
+        function toggle(selector) {
+            document.querySelector(selector).toggle();
+            document.getElementById('audience-checkbox').checked = true;
+            return false;
+        }
+    </script>
+</dom-module>

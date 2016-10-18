@@ -1,0 +1,216 @@
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+<link rel="import" href="/bower_components/paper-button/paper-button.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="/bower_components/neon-animation/neon-animatable-behavior.html">
+<link rel="import" href="/bower_components/neon-animation/neon-shared-element-animatable-behavior.html">
+<link rel="import" href="/bower_components/neon-animation/animations/scale-up-animation.html">
+<link rel="import" href="/bower_components/neon-animation/animations/hero-animation.html">
+<link rel="import" href="/bower_components/neon-animation/animations/fade-out-animation.html">
+<link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="menu-button.html">
+
+
+<dom-module id="see-how-we-do-it">
+    <style>
+        h1 {
+            font-size: 1.4em;
+            font-weight: 400;
+        }
+        .strong {
+            font-weight: 900;
+        }
+        paper-card {
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.9);
+            position: absolute;
+            left: 1em;
+            right:1em;
+            bottom: 1em;
+        }
+        .card-actions paper-button {
+            background-color: var(--default-primary-color);
+            color: var(--text-primary-color);
+            @apply(--layout-vertical);
+            @apply(--center-justified);
+            margin: 0 auto 3%;
+            line-height: 32px;
+            border-radius: 16px;
+            font-size: 1.2em;
+            max-width: 70%;
+            transition: all 0.5s;
+        }
+        .card-actions paper-button:hover {
+            background-color: var(--default-primary-color);
+            color: var(--text-primary-color);
+            transition: all 0.5s;
+        }
+        paper-card .card-actions {
+            border: none;
+        }
+
+        /* media quries */
+        @media screen and (min-width: 768px) {
+            paper-card {
+                left: 20%;
+                right: 20%;
+                bottom: 5%;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+        @media screen and (min-width: 1280px){
+            .card-actions {
+                font-size: 2em;
+            }
+        }
+        @media screen and (max-width:768px){
+            .card-content {
+                padding: 0.5em;
+            }
+        }
+        .home-photos {
+            width: 100%;
+            height: 100%;
+        }
+        .half-screen {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+        }
+        .half-screen#ewa {
+            left: 0;
+            right: 50%;
+            background: url(/images/ewa-bg.jpg) no-repeat 68% 0;
+            background-size: cover;
+        }
+        .half-screen#bartek {
+            right: 0;
+            left: 50%;
+            background: url(/images/bartek-bg.jpg) no-repeat 29% 0;
+            background-size: cover;
+        }
+        iron-icon {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            width: 36px;
+            height: 35px;
+        }
+        @media screen and (max-height: 1024px) {
+            .half-screen#ewa {
+                background: url(/images/ewa-bg-medium.jpg) no-repeat 68% 0;
+                background-size: cover;
+            }
+            .half-screen#bartek {
+                background: url(/images/bartek-bg-medium.jpg) no-repeat 29% 0;
+                background-size: cover;
+            }
+        }
+        @media screen and (max-height: 768px) {
+            .half-screen#ewa {
+                background: url(/images/ewa-bg-small.jpg) no-repeat 65% 0;
+                background-size: cover;
+            }
+            .half-screen#bartek {
+                background: url(/images/bartek-bg-small.jpg) no-repeat 32% 0;
+                background-size: cover;
+            }
+        }
+        /* CTAs */
+        #cta-phone-landscape {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        #cta-phone-landscape paper-button {
+            max-width: 80%;
+        }
+        @media screen and (max-width: 767px) and (orientation: landscape) {
+            #cta-container {
+                display: none;
+            }
+            #cta-phone-landscape {
+                display: block;
+            }
+        }
+        @media screen and (min-width:1025px) {
+              .card-actions paper-button:hover, .card-actions paper-button:active, .card-actions paper-button:focus {
+                    background: var(--dark-primary-color);
+                    transition: all 0.2s;
+                }
+        }
+    </style>
+
+    <template>
+        <div class="home-photos">
+            <div class="half-screen" id="ewa"></div>
+            <div class="half-screen" id="bartek"></div>
+        </div>
+        <div>
+            <iron-icon src="/images/logo-white.png"></iron-icon>
+        </div>
+        <paper-card elevation=3 id="cta-container">
+            <div class="card-content">
+                <h1>
+                    We deliver <span class="strong">great software</span> &amp; development <span class="strong">experience</span>
+                </h1>
+            </div>
+            <div class="card-actions" id="cta" on-tap="ctaClick">
+                <paper-button raised focused>How we do IT</paper-button>
+            </div>
+        </paper-card>
+        <div id="cta-phone-landscape" class="card-actions" on-tap="ctaClick">
+            <paper-button raised focused>How we deliver great software</paper-button>
+        </div>
+        <menu-button></menu-button>
+    </template>
+
+    <script>
+
+        Polymer({
+            is: 'see-how-we-do-it',
+
+            behaviors: [Polymer.NeonSharedElementAnimatableBehavior],
+
+            properties: {
+                animationConfig: {
+                    value: function(){
+                        return {
+                            'entry': {
+                                name: 'scale-up-animation',
+                                node: this
+                            },
+                            'exit': [{
+                                name: 'hero-animation',
+                                id: 'hero',
+                                fromPage: this
+                            }, {
+                                name: 'fade-out-animation',
+                                node: this
+                            }]
+                        };
+                    }
+                },
+
+                sharedElements: {
+                    value: function() {
+                        return {
+                            'hero': this.$.cta
+                        };
+                    }
+                }
+            },
+
+            ctaClick: function() {
+                this.fire('ctaClicked');
+            }
+        });
+
+    </script>
+</dom-module>

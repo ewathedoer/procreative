@@ -1,0 +1,464 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Startup development success is based on the balance between developer, designer and entrepreneur minds in the team.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Polymer Starter Kit"/>
+    <title>Startup Development</title>
+    
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#2E3AA1">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Tile color for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Startup Development">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Startup Development">
+
+    <!-- icons -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+    <link rel="icon" sizes="144x144" href="/ms-touch-icon-144x144-precomposed.png">
+    <link rel="icon" sizes="192x192" href="/chrome-touch-icon-192x192.png">
+    <meta name="msapplication-TileImage" content="/ms-touch-icon-144x144-precomposed.png">
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="/styles/main.css">
+    <!-- endbuild-->
+
+    <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+    <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+    <!-- imports from polymer elements -->    
+    <link rel="import" href="/bower_components/polymer/polymer.html">
+    <link rel="import" href="/elements/elements.html">
+    
+    <link rel="import" href="/elements/back-to-portfolio.html">
+    <link rel="import" href="/bower_components/google-youtube/google-youtube.html">
+    <link rel="import" href="/bower_components/neon-animation/neon-animated-pages.html">
+    <link rel="import" href="/bower_components/neon-animation/neon-animatable.html">
+    <link rel="import" href="/bower_components/neon-animation/neon-animations.html">
+    
+    
+    <style is="custom-style">
+       html, body {
+            background: white;
+            text-align: center;
+            height: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        paper-scroll-header-panel {
+          height: 100%;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: #FF5722;
+
+          /* background for toolbar when it is at its full size */
+          --paper-scroll-header-panel-full-header: {
+            background-image: url(/images/no-sky-limit.jpeg);
+          };
+
+          /* background for toolbar when it is condensed */
+          --paper-scroll-header-panel-condensed-header: {
+            background-color: var(--default-primary-color);
+          };
+            
+          --paper-scroll-header-header: {
+            pointer-events: none;
+          }
+        }
+        
+        paper-toolbar h1 {
+            font-size: 1.6em;
+        }
+        
+        @media screen and (max-width: 414px) {
+            paper-toolbar h1 {
+                font-size: 1.2em;
+            }
+        }
+        
+        /*content styling*/
+        h2, h3 {
+            font-family: 'Roboto Slab';
+            font-weight: 500;
+        }
+        .parent {
+            display: table;
+            width: 100%;
+        }
+        .screen {
+            display: table-cell;
+            vertical-align: middle;
+            box-sizing:border-box;
+            height: 100vh;
+            background: #FF5722;
+            color: var(--text-primary-color);
+            padding: 15%;
+        }
+        .screen h2 {
+            font-size: 4em;
+        }
+        .screen p {
+            font-size: 1.6em;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        .screen p strong {
+           color: rgba(255, 255, 255, 1);
+        }
+        @media screen and (min-width: 1440px) {
+            .screen {
+                padding: 15% 20%;
+            }
+        }
+        @media screen and (max-width: 768px){
+            .screen {
+                padding: 5%;
+            }
+        }
+       
+        @media screen and (max-width: 767px){
+            .screen h2 {
+                font-size: 2em; 
+            }
+            .screen p {
+                font-size: 1.2em;
+            }
+            neon-animatable {
+                height: 40%;
+            }
+            .intro-to-slider {
+                padding-bottom: 2em;
+            }
+        }
+        @media screen and (min-width:768px) and (max-width:1280px) {
+            .screen h2 {
+                font-size: 3em; 
+            }
+        }
+        .content {
+            width: 100%;
+        }
+        /*the blend's style used in homepage how we do it*/
+        .blend {
+            background: rgba(255,255,255,0.7);
+            padding: 5%;
+            border-radius: 16px;
+        }
+        paper-card.image{
+            margin-top: 3em;
+            width: 80%;
+        }
+        .image img {
+            width: 100%;
+            height: auto;
+        }
+        .first-screen {
+            display: block;
+            height: auto;
+            padding-top: 5%;
+        }        
+        google-youtube {
+            position: relative;
+        }
+        .timeline {
+            background: transparent;
+            height: auto;
+            border-left: 1px solid;
+            text-align: left;
+            padding-top: 2em;
+            position: relative;
+        }
+        .timeline iron-icon {
+            position: absolute;
+            top: -0.8em;
+            left: -1em;
+            width: 2em;
+            height: 2em;
+        }
+        .timeline li h3 {
+            font-size: 1.4em;
+        }
+        .timeline li p {
+            font-size: 1.2em;
+        }
+        @media screen and (min-width: 1440px) {
+            .timeline li p {
+                font-size: 1.4em;
+            }
+        }
+        .timeline li {
+            margin-left: -1.6em;
+        }
+        
+        /*similar stories*/
+        neon-animatable {
+            color: white;
+            @apply(--layout-horizontal);
+            @apply(--layout-center-center);
+            @apply(--paper-font-display4);
+            font-size: 1em;
+        }
+        neon-animated-pages {
+            height: 60%;
+        }
+        neon-animatable > a {
+            text-decoration: none !important;
+        }
+        neon-animatable.iron-selected > a {
+            font-size: 2em;
+            padding: 1em 2em;
+        }
+        @media screen and (max-width: 768px) and (orientation: portrait) {
+            neon-animated-pages {
+                height: 40%;
+            }
+        }
+        @media screen and (min-width:768px) {
+            neon-animatable.iron-selected > a {
+                border: 1px dashed;
+            }
+            neon-animatable > a {
+                text-decoration: none !important;
+            }
+        }
+        neon-animatable:nth-child(1) {
+            background: transparent;
+        }
+
+        neon-animatable:nth-child(2) {
+            background: transparent;
+        }
+
+        neon-animatable:nth-child(3) {
+            background: transparent;
+        }
+
+        neon-animatable:nth-child(4) {
+            background: #009688;
+        }
+        @media screen and (max-width: 767px) {
+            neon-animatable.iron-selected {
+                background: rgba(255,171,145,0.5);
+                border-radius: 15px;
+            }
+        }
+        .toolbar {
+            margin-bottom: 2em;
+        }
+        .toolbar button {
+            color: white;
+            cursor: pointer;
+            font-size: 2em;
+            background: transparent;
+            border: none;
+            margin: 0 1em;
+        }
+        
+    </style>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-4898616-14', 'auto');
+      ga('send', 'pageview');
+    </script>
+</head>
+<body unresolved class="fullbleed layout vertical">
+    
+    <paper-scroll-header-panel class="flex" no-dissolve condenses header-height="50vh" condensed-header-height="64" id="header">
+
+        <paper-toolbar class="supertall portfolio">
+            <a href="/" class="site-logo" title="ProCreative Home"><iron-icon src="/images/logo-white.png"></iron-icon></a>
+            <div class="flex"></div>
+            <menu-button class="top-menu"></menu-button>
+            <div class="bottom title hideable-title"><h1>No app limit</h1></div>  
+        </paper-toolbar>
+
+        <div class="content">
+            
+
+            <section class="parent">
+                <div class="screen first-screen">
+                    <div>
+                        <h2>Case study</h2>
+                        <p>
+                            <a href="http://www.tripbuzz.com/free-things-to-do/san-francisco-ca" target="_blank" class="link">TripBuzz</a> is the example of startup which has been developed over the last <strong>few years</strong> by our team.<br/>The app makes sightseeing across States easier categorizing the attractions according to the distance and activity type.  
+                        </p>
+                        <paper-card class="image" elevation="5">
+                            <img src="/images/portfolio/trippbuzz-app.gif" alt="gif image showing the screens from TripBuzz application"/>
+                        </paper-card>
+                    </div>
+                </div>
+            </section>
+
+            <section class="parent">
+                <div class="screen">
+                    <h2>Our role</h2>
+                    <p>
+                        The service grows organically, it started from <strong>MVP</strong> and is based on <strong>LEAN</strong> approach.
+                    </p>
+                    <p>
+                        Our <strong>role</strong> so far has been to choose the best tools, design software architecture, implement both backened and frontend, adjust it to changes the owners wanted to introduce, suggest best technical solutions for each new idea, monitor the app running with huge traffic.
+                    </p>
+                </div>
+            </section>
+
+            <section class="parent">
+                <div class="screen">
+                    <h2>History</h2>
+                    <div class="timeline">
+                        <iron-icon icon="expand-less"></iron-icon>
+                        <ul>
+                            <li>
+                                <h3>2015</h3>
+                                <p>
+                                    We created background workers which helped with processing big amounts of geo data.<br>
+                                    New feature for adding user feedback to sightseeing attractions was developed.
+                                </p>
+                            </li>
+                            <li>
+                                <h3>2014</h3>
+                                <p>
+                                    Voting system for attractions, thematic pages templates, hotel search functionality were added.<br>
+                                    We introduced individual attraction pages and mobile version of thematic pages.
+                                </p>
+                            </li>
+                            <li>
+                                <h3>2013</h3>
+                                <p>We designed software architecture and implemented the first version of TripBuzz.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="parent">
+                <div class="screen">  
+                    <div>
+                        <h2>Technology</h2>
+                        <p>
+                            TripBuzz relies on geographical data and uses them to a great extent. The algorithm has been implemented to connect data from the rating system with geo data. This allowed us to provide the best attractions for the given location in the search results.
+                        </p>
+                        <p>
+                            A sophisticated caching system has been implemented to maintain speed of the search engine with the growing userbase.
+                            In order to build the cache we've developed a set of background workers which update the cached data continuously.
+                        </p>
+                    </div> 
+                </div>
+            </section>
+            
+            <section class="parent">
+                <div class="screen" id="pages-container"> 
+                    <h2>Similar projects</h2>
+                    
+                    <template is="dom-bind">
+
+                      <div class="toolbar">
+                        <p class="intro-to-slider">Have a look at other <strong>startups</strong> we took part in.</p>
+                        <button id="prev-slide" on-click="_onPrevClick">&lt;&lt;</button>
+                        <button id="next-slide" on-click="_onNextClick">&gt;&gt;</button>
+                      </div>
+
+                      <neon-animated-pages id="pages" class="flex" selected="[[selected]]" entry-animation="[[entryAnimation]]" exit-animation="[[exitAnimation]]">
+                        <neon-animatable>
+                            <a href="http://www.sportsmantracker.com/" class="link" target="_blank">
+                                Sportsmantracker
+                            </a>
+                        </neon-animatable>                        
+                        <neon-animatable>
+                            <a href="http://www.tumego.de/" class="link" target="_blank">
+                                Tumego
+                            </a>
+                        </neon-animatable>
+                        <neon-animatable>
+                            <a href="http://www.freebooknotes.com/" class="link" target="_blank">
+                                FreebookNotes
+                            </a>
+                        </neon-animatable>
+                      </neon-animated-pages>
+
+                    </template>
+                </div>
+            </section>
+            
+            <section class="parent">
+                <div class="screen">
+                    <h2>From an idea to new versions</h2>
+
+                    <p>
+                        We have worked with startup founders since 2010. We've been wearing different hats in the process of development. 
+                    </p>
+                    <paper-card class="image" elevation="5">
+                        <google-youtube 
+                          video-id="ZvNpwAx-l-c"
+                          rel="0"
+                          fluid
+                          start="0"
+                          autoplay="0">
+                        </google-youtube>
+                    </paper-card>
+                </div>
+            </section>
+
+
+        </div> <!--the end of scroll header content -->
+
+        <back-to-portfolio text="e-commerce" link="ecommerce-development"></back-to-portfolio>
+        <procreative-footer></procreative-footer>
+
+    </paper-scroll-header-panel>
+
+    <menu-content></menu-content>
+    
+    <script src="/scripts/hammer.js"></script>
+    <script>
+        var scope = document.querySelector('template[is="dom-bind"]');
+        scope.selected = 0;
+
+        scope._onPrevClick = function() {
+            this.entryAnimation = 'slide-from-left-animation';
+            this.exitAnimation = 'slide-right-animation';
+            this.selected = this.selected === 0 ? 2 : (this.selected - 1);
+        }
+
+        scope._onNextClick = function() {
+            this.entryAnimation = 'slide-from-right-animation';
+            this.exitAnimation = 'slide-left-animation';
+            this.selected = this.selected === 2 ? 0 : (this.selected + 1);
+        }
+        
+        var hm = new Hammer(document.getElementById('pages-container'));
+        hm.on('swipeleft', function() {
+            document.getElementById('next-slide').click();
+        });
+        hm.on('swiperight', function() {
+            document.getElementById('prev-slide').click();
+        });
+    </script>
+    <script async src="/scripts/main.js"></script>
+</body>
+</html>

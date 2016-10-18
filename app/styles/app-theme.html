@@ -1,0 +1,312 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<style is="custom-style">
+
+  /*
+   Polymer includes a shim for CSS Custom Properties that we can use for application theming.
+   Below, you'll find the default palette for the Polymer Starter Kit layout. Feel free to play
+   with changing the colors used or generate your own palette of colours at MaterialPalette.com.
+
+   See https://www.polymer-project.org/1.0/docs/devguide/styling.html#xscope-styling-details
+   for further information on custom CSS properties.
+   */
+
+    /* Application theme */
+
+    :root {
+        --dark-primary-color:       #0288D1;
+        --default-primary-color:    #03A9F4; /* 3, 169, 244 */
+        --light-primary-color:      #B3E5FC;
+        --text-primary-color:       #FFFFFF;
+        --accent-color:             #FF5722;
+        --primary-background-color: #B3E5FC;
+        --primary-text-color:       #212121;
+        --secondary-text-color:     #727272;
+        --disabled-text-color:      #BDBDBD;
+        --divider-color:            #B6B6B6;
+        --menu-chosen-color:        #607D8B;
+
+
+    /* Components */
+
+    /* paper-drawer-panel */
+        --drawer-menu-color:           var(--default-primary-color);
+        --drawer-border-color:         1px solid #ccc;
+        --drawer-toolbar-border-color: 1px solid rgba(0, 0, 0, 0.22);
+        --drawer-menu-link-color:      #fff;
+
+    /* paper-menu */
+        --paper-menu-background-color: #03A9F4;
+        --menu-link-color:             #fff;
+
+    /* paper-input */
+        --paper-input-container-color:         var(--secondary-text-color);
+        --paper-input-container-focus-color:   var(--default-primary-color);
+        --paper-input-container-input-color:   var(--primary-text-color);
+        --paper-input-container-invalid-color: #E91E63;
+    /* paper-slider */
+        --paper-slider-knob-color: var(--default-primary-color);
+        --paper-slider-active-color: var(--default-primary-color);
+        --paper-slider-pin-color: var(--default-primary-color);
+    }
+
+
+    /* General styles */
+
+   
+    
+    /* ProCreative custom-built styles */
+    paper-input, paper-textarea, gold-email-input {
+        --paper-input-container-input: {
+            font-size: 1em;
+            line-height: normal;
+        };
+        --paper-input-container-label: {
+            font-size: 0.9em;
+            color: var(--dark-primary-color);
+        };
+        --paper-input-container-label-focus: {
+            color: var(--dark-primary-color);
+        };
+    }
+    .site-logo {
+        padding: 18px 14px 14px;
+        margin-left: -14px;
+    }
+    .site-logo iron-icon {
+        width: 36px;
+        height: 35px;
+    }
+    
+    .bottom.title.hideable-title {
+        opacity: 0;
+        transition: opacity 0.5s;
+    }
+    
+    paper-card {
+        background: #fff;
+    }
+    
+    paper-toolbar {
+        background: var(--default-primary-color);
+    }
+    
+    paper-toolbar.tall {
+        background-color: transparent;
+        height: 20vh;
+    }
+    paper-toolbar.tall .title {
+        font-size: 2em; /* previously in px, 32 */
+        margin: -2px 0 0;
+        text-align: center;
+
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+    }
+    @media screen and (max-width: 600px) {
+        paper-toolbar.tall .title {
+            margin-top: -5px !important;
+        }
+        .site-logo {
+            margin-top: 3px;
+        }
+    }
+
+    paper-toolbar.supertall {
+        background-color: transparent;
+        height: 50vh;
+    }
+
+    paper-toolbar.supertall .title {
+        font-size: 2em; /* previously in px, 32 */
+        margin-left: 0;
+        text-align: center;
+
+        -webkit-transform-origin: center center;
+        transform-origin: center center;
+    }
+    @media screen and (max-width: 767px) and (orientation: landscape) {
+        paper-toolbar .title {
+            font-size: 1.5em !important;
+        }
+        paper-toolbar {
+            background: var(--default-primary-color) !important;
+        }
+    }
+    paper-toast {
+        z-index: 100;
+    }
+    a.link, a.link:visited {
+        text-decoration: underline;
+        color: rgba(255,255,255,1);
+        transition: all 0.5s;
+    }
+    a.link:hover, a.link:focus, a.link:active {
+        color: var(--default-primary-color);
+        transition: all 0.2s;
+    }
+    paper-toolbar menu-button {
+        padding-top: 2px;
+    }
+    paper-toolbar menu-button:hover,
+    paper-toolbar menu-button:focus,
+    paper-toolbar menu-button:active {
+        background: transparent;
+    }
+    
+    .quoted-text {
+        position: relative;
+    }
+    .quote {
+        color: #ccc;
+        opacity: 0.25;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        z-index: 0;
+        margin: -10% 0 0 -10%;
+    }
+    
+    /*subpage intro*/
+    .subpage-intro {
+        padding: 5%;
+        text-align: center;
+        color: var(--primary-text-color);
+        font-size: 1em;
+        font-weight: 400;
+        margin: 2em;
+        clear: both;
+    }
+    @media screen and (max-width:667px){
+        .subpage-intro h2 {
+            font-weight: 500;
+            font-size: 1.2em;
+        }
+    }
+    @media screen and (min-width: 668px){
+        .subpage-intro h2 {
+            font-weight: 500;
+            font-size: 2em;
+        }
+    }
+    @media screen and (max-width:1024px) {
+        .subpage-intro {
+            background-color: transparent;
+            margin: 1em;
+        }
+    }
+    @media screen and (min-width:1025px) {
+        .subpage-intro h2 {
+            font-size: 2.5em;
+        }
+    }
+    @media screen and (min-width: 1026px) {
+        .subpage-intro {
+            font-size: 1.2em;
+            padding: 1%;
+            color: var(--secondary-text-color);
+        }
+    }
+    @media screen and (min-width: 1440px) {
+        .timeline {
+            display: block;
+            text-align: left;
+            width: 800px;
+            margin:0 auto;
+        }
+        .quote {
+            margin: -5% 0 0 -35%;
+        }
+    }
+    /*
+    a.podajklasę:-webkit-any-link  {
+        text-decoration: none;
+    }
+    */
+    
+    /* Small */
+    @media (max-width: 600px) {
+        paper-material {
+          --menu-container-display: none;
+          width: calc(97.33% - 32px);
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .bg {
+          background: white;
+        }
+    }
+
+    /* Tablet+ */
+    @media (min-width: 601px) {
+
+        paper-material {
+          width: calc(98% - 46px);
+          margin-bottom: 32px;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+
+        #drawer.paper-drawer-panel > [drawer] {
+          border-right: 1px solid rgba(0, 0, 0, 0.14);
+        }
+
+        iron-pages {
+          padding: 48px 62px;
+        }
+
+    }
+
+    /* Material Design Adaptive Breakpoints */
+    /*
+    Below you'll find CSS media queries based on the breakpoint guidance
+    published by the Material Design team. You can choose to use, customise
+    or remove these breakpoints based on your needs.
+
+    http://www.google.com/design/spec/layout/adaptive-ui.html#adaptive-ui-breakpoints
+    */
+
+    /* mobile-small */
+    @media all and (min-width: 0) and (max-width: 360px) and (orientation: portrait) { }
+    /* mobile-large */
+    @media all and (min-width: 361px) and (orientation: portrait) { }
+    /* mobile-small-landscape */
+    @media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { }
+    /* mobile-large-landscape */
+    @media all and (min-width: 481px) and (orientation: landscape) { }
+    /* tablet-small-landscape */
+    @media all and (min-width: 600px) and (max-width: 960px) and (orientation: landscape) { }
+    /* tablet-large-landscape */
+    @media all and (min-width: 961px) and (orientation: landscape) { }
+    /* tablet-small */
+    @media all and (min-width: 600px) and (orientation: portrait) { }
+    /* tablet-large */
+    @media all and (min-width: 601px) and (max-width: 840px) and (orientation : portrait) { }
+    /* desktop-x-small-landscape */
+    @media all and (min-width: 0) and (max-width: 480px) and (orientation: landscape) { }
+    /* desktop-x-small */
+    @media all and (min-width: 0) and (max-width: 480px) and (max-aspect-ratio: 4/3) { }
+    /* desktop-small-landscape */
+    @media all and (min-width: 481px) and (max-width: 840px) and (orientation: landscape) { }
+    /* desktop-small */
+    @media all and (min-width: 481px) and (max-width: 840px) and (max-aspect-ratio: 4/3) { }
+    /* desktop-medium-landscape */
+    @media all and (min-width: 841px) and (max-width: 1280px) and (orientation: landscape) { }
+    /* desktop-medium */
+    @media all and (min-width: 841px) and (max-width: 1280px) and (max-aspect-ratio: 4/3) { }
+    /* desktop-large */
+    @media all and (min-width: 1281px) and (max-width: 1600px) { }
+    /* desktop-xlarge */
+    @media all and (min-width: 1601px) and (max-width: 1920px) { }
+</style>

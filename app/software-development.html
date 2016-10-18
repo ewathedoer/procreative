@@ -1,0 +1,275 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Looking for web developers? ProCreative is a Web Applications Development Company Designing and Implementing Custom-Built Software Solutions.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Polymer Starter Kit"/>
+    <title>Web Applications Development Company Providing Custom-Built Software</title>
+    
+    <!-- Chrome for Android theme color -->
+    <meta name="theme-color" content="#2E3AA1">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Tile color for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Web Applications Development Company Providing Custom-Built Software">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Web Applications Development Company Providing Custom-Built Software">
+
+    <!-- icons -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon.png">
+    <link rel="icon" sizes="144x144" href="/ms-touch-icon-144x144-precomposed.png">
+    <link rel="icon" sizes="192x192" href="/chrome-touch-icon-192x192.png">
+    <meta name="msapplication-TileImage" content="/ms-touch-icon-144x144-precomposed.png">
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="/styles/main.css">
+    <!-- endbuild-->
+
+    <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+    <script src="/bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+    <!-- imports from polymer elements -->    
+    <link rel="import" href="/bower_components/polymer/polymer.html">
+    <link rel="import" href="/elements/elements.html">
+    
+    <link rel="import" href="/elements/see-portfolio.html">
+    
+    
+    <style is="custom-style">
+       html, body {
+            background-color: white;
+            text-align: center;
+            height: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: white;
+        }
+        paper-scroll-header-panel {
+          height: 100%;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background-color: white;
+
+          /* background for toolbar when it is at its full size */
+          --paper-scroll-header-panel-full-header: {
+            background-image: url(/images/credo.jpg);
+          };
+
+          /* background for toolbar when it is condensed */
+          --paper-scroll-header-panel-condensed-header: {
+            background-color: var(--default-primary-color);
+          };
+            
+          --paper-scroll-header-header: {
+            pointer-events: none;
+          }
+        }
+        
+        paper-toolbar h1 {
+            font-size: 1.6em;
+        }
+        @media screen and (max-width: 414px) {
+            paper-toolbar h1 {
+                font-size: 1.2em;
+            }
+        }
+        
+        /*
+        more than an iPad horizontally 
+        @media screen and (min-width: 1025px) {
+            .content {
+              padding: 5%;
+            }
+        }*/
+        
+        /*content styling*/
+        h2, h3 {
+            font-family: 'Roboto Slab';
+            font-weight: 500;
+        }
+        .parent {
+            display: table;
+            width: 100%;
+        }
+        paper-card {
+            display: table-cell;
+            vertical-align: middle;
+            box-sizing: border-box;
+            height: 100vh;
+            padding-left: 20%;
+            padding-right: 20%;
+        }
+        .first-screen paper-card {
+            height: 80vh;
+        }
+        @media screen and (max-width: 768px){
+            paper-card {
+                padding: 5%;
+            }
+        }
+        @media screen and (min-width:769px) and (max-width: 1280px) {
+             paper-card {
+                padding: 10%;
+            }
+        }
+        paper-card h2 {
+            font-size: 2em;
+            font-weight: 900;
+        }
+        paper-card p {
+            font-size: 1.6em;
+            font-weight: 400;
+        }
+        @media screen and (max-width: 767px){
+            paper-card h2 {
+                font-size: 1.6em; 
+            }
+            paper-card p {
+                font-size: 1.2em;
+            }
+        }
+        .content {
+            width: 100%;
+        }
+        #experience {
+            background: var(--text-primary-color);
+            color: var(--primary-text-color);
+        }
+        #business {
+            background: white;
+            color: var(--primary-text-color);
+        }
+        .blend {
+            background: rgba(255,255,255,0.7);
+            padding: 5%;
+            border-radius: 16px;
+        }
+        #partnership {
+            background: url(/images/experience.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        @media screen and (max-width:1024px){
+            #partnership {
+                background: url(/images/experience_small.jpg) no-repeat center center;
+                background-size: cover;
+            }
+        }
+        #creativity {
+            background: url(/images/stay-hungry-stay-foolish.jpg) no-repeat center center;
+            background-size: cover;
+        }
+        #balance {
+            background: white;
+            background-size: cover;
+            color: var(--primary-text-color);
+        }
+        @media screen and (min-width:768px) {
+            paper-card h2 {
+                font-size: 4em;
+                font-weight: 400;
+            }
+        }
+    </style>
+    
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-4898616-14', 'auto');
+      ga('send', 'pageview');
+    </script>
+</head>
+<body unresolved class="fullbleed layout vertical">
+    
+        <paper-scroll-header-panel class="flex" condenses header-height="20vh" condensed-header-height="64" id="header">
+            
+            <paper-toolbar class="tall">
+                <a href="/" class="site-logo" title="ProCreative Home"><iron-icon src="/images/logo-white.png"></iron-icon></a>
+                <div class="flex"></div>
+                <menu-button class="top-menu"></menu-button>
+                <div class="bottom title"><h1>Our Credo</h1></div>  
+            </paper-toolbar>
+            
+            <div class="content">
+                <div class="parent first-screen">
+                    <paper-card id="experience">
+                        <h2>Life is all about Experience</h2>
+                        <p>
+                            What matters most for the success is the end <strong>user</strong>. For us it's you and your product's audience. We start each project from analysis, so firstly we listen, ask, research. Later we advise and suggest. Smart solutions <strong>save money</strong>. Great product motivates people to share the news with friends.
+                        </p>
+                    </paper-card>
+                </div>
+                
+                <div class="parent">
+                    <paper-card id="partnership">
+                        <div class="blend">
+                            <h2>Good product is never done</h2>
+                            <p>
+                            Successful ideas have their continuation. You don't write software once and forever. We play in <strong>your team</strong>. We are whenever you need us: to start a project, celebrate the next success, advise which tool to use, balance business with design and technical knowledge, and to implement the new features your users anticipate.
+                        </p>
+                        </div>
+                    </paper-card>
+                </div>
+                
+                <div class="parent">
+                    <paper-card id="business">
+                        <h2>Being on the same page is powerful </h2>
+                        <p>
+                            You've found the programming team who base their work on <strong>smooth communication</strong>, clear goals, and trust. 
+                        </p>
+                    </paper-card>
+                </div>
+            
+                <div class="parent">
+                    <paper-card id="creativity">  
+                        <div class="blend">
+                            <h2>Curiosity empowers creativity</h2>
+                            <p>
+                                Isn't it awesome to be always learning? You grow when you <strong>stay hungry</strong>. Food for thoughts triggers innovation and we are the foodies. 
+                            </p>
+                        </div> 
+                    </paper-card>
+                </div>
+                
+                <div class="parent">
+                    <paper-card id="balance">
+                        <h2>Lack of balance kills</h2>
+                        <p>
+                            Passion makes a man and business is human. We love having a good rest, who doesn't? Saying no and filtering the challenges make you grow. Hand-picked variety is the driving force. Out of the box thinking requires <strong>quality time and inspiration</strong>.
+                        </p>
+                    </paper-card>
+                </div>
+        
+            </div>
+            
+            <see-portfolio></see-portfolio>
+            <procreative-footer></procreative-footer>
+            
+        </paper-scroll-header-panel>
+        
+        <menu-content></menu-content>
+    
+    <script async src="/scripts/main.js"></script>
+</body>
+</html>
